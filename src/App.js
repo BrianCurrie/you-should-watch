@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Axios from 'axios';
+
+import SearchItem from './SearchItem.js';
+
+const tmdbApiKey = '25fdf9176de21bcf1b06588eca8336a6';
+
+async function searchMovies(query) {
+    return query
+        ? Axios.get(
+              `https://api.themoviedb.org/3/search/movie?api_key=${tmdbApiKey}&language=en-US&query=${query}&page=1`
+          )
+        : [];
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [list, setList] = useState([]);
+    const [movies, setMovies] = useState([]);
+
+    return (
+        <div>
+            <input
+                onChange={(e) => {
+                    searchMovies(e.target.value).then((res) => {
+                        setMovies(res.data ? res.data.results : []);
+                        console.log(res.data.results);
+                    });
+                }}
+            />
+            {movies &&
+                movies.map((movie) => (
+                    <SearchItem key={movie.id} movie={movie} />
+                ))}
+        </div>
+    );
 }
 
 export default App;
