@@ -15,21 +15,40 @@ async function searchMovies(query) {
 
 function App() {
     const [list, setList] = useState([]);
-    const [movies, setMovies] = useState([]);
+    const [searchEles, setSearchEles] = useState([]);
+
+    function addMovie(movie) {
+        // Check if movie is already in the list
+        if (list.filter((ele) => ele.id === movie.id).length === 0) {
+            setList((list) => [...list, movie]);
+            console.log('Added: ', movie.title);
+        } else {
+            console.log('Duplicate');
+        }
+    }
+
+    function logList() {
+        console.log(list);
+    }
 
     return (
         <div>
             <input
                 onChange={(e) => {
                     searchMovies(e.target.value).then((res) => {
-                        setMovies(res.data ? res.data.results : []);
+                        setSearchEles(res.data ? res.data.results : []);
                         console.log(res.data.results);
                     });
                 }}
-            />
-            {movies &&
-                movies.map((movie) => (
-                    <SearchItem key={movie.id} movie={movie} />
+            />{' '}
+            <button onClick={logList}>Log List</button>
+            {searchEles &&
+                searchEles.map((movie) => (
+                    <SearchItem
+                        key={movie.id}
+                        movie={movie}
+                        addMovie={addMovie}
+                    />
                 ))}
         </div>
     );
