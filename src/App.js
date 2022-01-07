@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 
 import SearchItem from './SearchItem.js';
+import { setFirestoreList, getFirestoreList } from './FirebaseList.js';
 
 const tmdbApiKey = '25fdf9176de21bcf1b06588eca8336a6';
 
@@ -27,8 +28,10 @@ function App() {
         }
     }
 
-    function logList() {
-        console.log(list);
+    async function logList() {
+        const docId = await setFirestoreList(list);
+        console.log(docId);
+        //getFirestoreList('IjbgrdV535ac3nCrBWmJ');
     }
 
     return (
@@ -40,7 +43,7 @@ function App() {
                         console.log(res.data.results);
                     });
                 }}
-            />{' '}
+            />
             <button onClick={logList}>Log List</button>
             {searchEles &&
                 searchEles.map((movie) => (
