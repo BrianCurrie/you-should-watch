@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Axios from 'axios';
 
 import SearchItem from './SearchItem.js';
-import { setFirestoreList, getFirestoreList } from './FirebaseList.js';
+import { setFirestoreList } from './FirebaseList.js';
 
 const tmdbApiKey = '25fdf9176de21bcf1b06588eca8336a6';
 
@@ -17,6 +17,7 @@ async function searchMovies(query) {
 function App() {
     const [list, setList] = useState([]);
     const [searchEles, setSearchEles] = useState([]);
+    const [shareLink, setShareLink] = useState('');
 
     function addMovie(movie) {
         // Check if movie is already in the list
@@ -28,10 +29,11 @@ function App() {
         }
     }
 
-    async function logList() {
+    async function createList() {
         const docId = await setFirestoreList(list);
-        console.log(docId);
-        //getFirestoreList('IjbgrdV535ac3nCrBWmJ');
+        if (docId) {
+            setShareLink(window.location.href + docId);
+        }
     }
 
     return (
@@ -40,11 +42,11 @@ function App() {
                 onChange={(e) => {
                     searchMovies(e.target.value).then((res) => {
                         setSearchEles(res.data ? res.data.results : []);
-                        console.log(res.data.results);
                     });
                 }}
             />
-            <button onClick={logList}>Log List</button>
+            <button onClick={createList}>Create List</button>
+            <a href={shareLink}>{shareLink}</a>
             {searchEles &&
                 searchEles.map((movie) => (
                     <SearchItem
