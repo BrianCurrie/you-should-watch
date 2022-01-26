@@ -1,41 +1,53 @@
 import React, { useState } from 'react';
-import { setFirestoreList } from '../FirebaseList.js';
+import { setFirestoreList } from '../Api/FirestoreList.js';
 
-import SearchItem from '../Components/SearchItem.js';
-import SearchMovies from '../Components/SearchMovies.js';
+import ListAddedItems from '../Components/ListAddedItems.js';
+import SearchItemList from '../Components/SearchItemList.js';
+import SearchMovies from '../Api/SearchMovies.js';
+
+function addMovie(movie, list, setList) {
+    // Check if movie is already in the list
+    if (list.filter((ele) => ele.id === movie.id).length === 0) {
+        setList((list) => [...list, movie]);
+        console.log('Added: ', movie.title);
+    } else {
+        console.log('Duplicate');
+    }
+}
+
+function removeMovie(movie, list, setList) {
+    // Remove movie from list by filtering list and checking movie IDs
+    const updatedList = list.filter((ele) => ele.id !== movie.id);
+    setList(updatedList);
+    console.log('Removed: ', movie.title);
+}
+
+async function publishList(title, description, list, setShareLink) {
+    const docId = await setFirestoreList(title, description, list);
+    if (docId) {
+        setShareLink(window.location.href + docId);
+    }
+}
 
 export default function CreateList() {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
     const [list, setList] = useState([]);
     const [searchEles, setSearchEles] = useState([]);
     const [shareLink, setShareLink] = useState('');
 
-    function addMovie(movie) {
-        // Check if movie is already in the list
-        if (list.filter((ele) => ele.id === movie.id).length === 0) {
-            setList((list) => [...list, movie]);
-            console.log('Added: ', movie.title);
-        } else {
-            console.log('Duplicate');
-        }
-    }
-
-    function removeMovie(movie) {
-        const updatedList = list.filter((ele) => ele.id !== movie.id);
-        setList(updatedList);
-        console.log('Removed: ', movie.title);
-    }
-
-    async function createList() {
-        const docId = await setFirestoreList(list);
-        if (docId) {
-            setShareLink(window.location.href + docId);
-        }
-    }
-
     return (
         <div>
-            <input type="text" placeholder="Title" />
-            <input type="text" placeholder="Description" />
+            <input
+                type="text"
+                placeholder="Title"
+                onInput={(e) => setTitle(e.target.value)}
+            />
+            <input
+                type="text"
+                placeholder="Description"
+                onInput={(e) => setDescription(e.target.value)}
+            />
             <input
                 type="text"
                 placeholder="Search..."
@@ -45,21 +57,24 @@ export default function CreateList() {
                     });
                 }}
             />
-            <button onClick={createList}>Publish</button>
-            {searchEles &&
-                searchEles.map((movie) => (
-                    <SearchItem
-                        key={movie.id}
-                        movie={movie}
-                        addMovie={addMovie}
-                    />
-                ))}
-            {list.map((movie) => (
-                <div key={movie.id}>
-                    {movie.title}
-                    <button onClick={() => removeMovie(movie)}>X</button>
-                </div>
-            ))}
+            <button
+                onClick={() => {
+                    publishList(title, description, list, setShareLink);
+                }}
+            >
+                Publish
+            </button>
+            <SearchItemList
+                searchEles={searchEles}
+                list={list}
+                setList={setList}
+                addMovie={addMovie}
+            />
+            <ListAddedItems
+                list={list}
+                setList={setList}
+                removeMovie={removeMovie}
+            />
             <a href={shareLink}>{shareLink}</a>
         </div>
     );

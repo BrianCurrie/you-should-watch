@@ -22,10 +22,14 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();
 
-async function setFirestoreList(listArr) {
+async function setFirestoreList(title, description, listArr) {
     if (listArr.length > 0) {
         try {
-            const docRef = await addDoc(collection(db, 'lists'), { listArr });
+            const docRef = await addDoc(collection(db, 'lists'), {
+                title,
+                description,
+                listArr,
+            });
             console.log('Document added, ID: ', docRef.id);
             return docRef.id;
         } catch (e) {
@@ -41,7 +45,7 @@ async function getFirestoreList(ref) {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-        return docSnap.data().listArr;
+        return docSnap.data();
     } else {
         console.log('Doesnt exist');
         return [];

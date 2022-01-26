@@ -23,7 +23,7 @@ export default function SearchItem(props) {
                 </div>
                 <div className="description">{movie.overview}</div>
             </div>
-            <button className="addBtn" onClick={() => props.addMovie(movie)}>
+            <button className="addBtn" onClick={props.addMovie}>
                 +
             </button>
         </div>
