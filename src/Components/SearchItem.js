@@ -1,4 +1,4 @@
-import './Sass/SearchItem.scss';
+import '../Sass/SearchItem.scss';
 
 export default function SearchItem(props) {
     const movie = props.movie;
@@ -13,7 +13,7 @@ export default function SearchItem(props) {
 
     return (
         <div className="container">
-            <img className="poster" src={posterUrl} />
+            <img className="poster" src={posterUrl} alt={movie.title} />
             <div className="info">
                 <div className="mainInfo">
                     <div className="title">{movie.title}</div>
