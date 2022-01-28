@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { setFirestoreList } from '../Api/FirestoreList.js';
 
 import ListAddedItems from '../Components/ListAddedItems.js';
 import SearchItemList from '../Components/SearchItemList.js';
 import SearchMovies from '../Api/SearchMovies.js';
+
+import Login from '../Components/Login.js';
 
 function addMovie(movie, list, setList) {
     // Check if movie is already in the list
@@ -38,6 +40,7 @@ export default function CreateList() {
 
     return (
         <div>
+            <Login />
             <input
                 type="text"
                 placeholder="Title"
