@@ -2,25 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { getFirestoreList } from '../Api/FirestoreList.js';
 
-export default function List() {
+import Login from '../Components/Login.js';
+import ListInfo from '../Components/ListInfo.js';
+import ListMovies from '../Components/ListMovies.js';
+
+export default function List(props) {
     const [listData, setListData] = useState({});
     const { id } = useParams();
+
+    // Hook similar to componentDidMount
+    // Only calls getFireStoreList() once, on initial mount
     useEffect(() => {
         getFirestoreList(id).then((data) => setListData(data));
     }, []);
 
     return (
         <div>
-            <h1>{listData.title}</h1>
-            <h2>{listData.description}</h2>
-            <h3>Unique list ID: {id}</h3>
-            {listData.listArr ? (
-                listData.listArr.map((movie) => (
-                    <div key={movie.id}>{movie.title}</div>
-                ))
-            ) : (
-                <div>Loading...</div>
-            )}
+            <Login setUser={props.setUser} />
+            <ListInfo listData={listData} id={id} />
+            <ListMovies movies={listData.listArr} />
         </div>
     );
 }

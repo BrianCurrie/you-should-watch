@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { setFirestoreList } from '../Api/FirestoreList.js';
 
 import ListAddedItems from '../Components/ListAddedItems.js';
@@ -24,14 +24,14 @@ function removeMovie(movie, list, setList) {
     console.log('Removed: ', movie.title);
 }
 
-async function publishList(title, description, list, setShareLink) {
-    const docId = await setFirestoreList(title, description, list);
+async function publishList(title, description, list, user, setShareLink) {
+    const docId = await setFirestoreList(title, description, list, user);
     if (docId) {
         setShareLink(window.location.href + docId);
     }
 }
 
-export default function CreateList() {
+export default function CreateList(props) {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [list, setList] = useState([]);
@@ -40,7 +40,7 @@ export default function CreateList() {
 
     return (
         <div>
-            <Login />
+            <Login setUser={props.setUser} />
             <input
                 type="text"
                 placeholder="Title"
@@ -62,7 +62,13 @@ export default function CreateList() {
             />
             <button
                 onClick={() => {
-                    publishList(title, description, list, setShareLink);
+                    publishList(
+                        title,
+                        description,
+                        list,
+                        props.user,
+                        setShareLink
+                    );
                 }}
             >
                 Publish

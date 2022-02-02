@@ -17,7 +17,21 @@ function signOutUser() {
     signOut(getAuth());
 }
 
-export default function Login() {
+function getImportantUserData(user) {
+    if (user) {
+        // If user is signed in
+        const uid = user.uid;
+        const name = user.displayName;
+        const profilePic = user.photoURL;
+
+        return { uid, name, profilePic };
+    } else {
+        // If user is not signed in
+        return null;
+    }
+}
+
+export default function Login(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     // Auth state listener on initial mount
@@ -31,12 +45,11 @@ export default function Login() {
     };
 
     const authStateObserver = () => {
-        console.log(
-            'User logged in:',
-            !!getAuth().currentUser,
-            getAuth().currentUser
-        );
-        setIsLoggedIn(!!getAuth().currentUser);
+        const currentUser = getAuth().currentUser;
+        console.log('User logged in:', !!currentUser, currentUser);
+        setIsLoggedIn(!!currentUser);
+        // setUser callback to save current user info to App.js state
+        props.setUser(getImportantUserData(currentUser));
     };
 
     return (

@@ -3,6 +3,7 @@ import {
     getFirestore,
     collection,
     addDoc,
+    setDoc,
     doc,
     getDoc,
 } from 'firebase/firestore';
@@ -19,24 +20,65 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore();
 
-async function setFirestoreList(title, description, listArr) {
+async function setFirestoreList(title, description, listArr, user) {
+    const timeCreated = Date.now();
     if (listArr.length > 0) {
         try {
             const docRef = await addDoc(collection(db, 'lists'), {
                 title,
                 description,
                 listArr,
+                user,
+                timeCreated,
             });
             console.log('Document added, ID: ', docRef.id);
+            addToUsersLists(user, docRef.id);
             return docRef.id;
         } catch (e) {
             console.error('Error adding doc: ', e);
         }
     } else {
         console.log('List empty');
+    }
+}
+
+async function addToUsersLists(user, listRef) {
+    let id;
+
+    if (user) {
+        id = user.uid;
+    } else {
+        user = null;
+        id = 'default';
+        console.log('Added list to non-logged in users list');
+    }
+
+    const listArr = await getUsersLists(id);
+    listArr.push(listRef);
+    const userRef = doc(db, 'users', id);
+    setDoc(
+        userRef,
+        {
+            user,
+            lists: listArr,
+        },
+        { merge: true }
+    );
+    console.log('Adding to users list', listRef);
+}
+
+async function getUsersLists(id) {
+    const docRef = doc(db, 'users', id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        console.log(docSnap.data());
+        return docSnap.data().lists;
+    } else {
+        console.log('User: ' + id + ' does not have any lists');
+        return [];
     }
 }
 
