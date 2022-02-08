@@ -3,7 +3,7 @@ import { setFirestoreList } from '../Api/FirestoreList.js';
 
 import ListAddedItems from '../Components/ListAddedItems.js';
 import SearchItemList from '../Components/SearchItemList.js';
-import SearchMovies from '../Api/SearchMovies.js';
+import { SearchMovies } from '../Api/TmdbApi.js';
 
 import Login from '../Components/Login.js';
 
