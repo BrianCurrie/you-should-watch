@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { setFirestoreList } from '../Api/FirestoreList.js';
+import { setFirestoreList } from '../api/FirestoreList.js';
 
-import ListAddedItems from '../Components/ListAddedItems.js';
-import SearchItemList from '../Components/SearchItemList.js';
-import { SearchMovies } from '../Api/TmdbApi.js';
+import ListAddedItems from '../components/ListAddedItems.js';
+import SearchItemList from '../components/SearchItemList.js';
+import { SearchMovies } from '../api/TmdbApi.js';
 
-import Login from '../Components/Login.js';
+import Login from '../components/Login.js';
 
 function addMovie(movie, list, setList) {
     // Check if movie is already in the list

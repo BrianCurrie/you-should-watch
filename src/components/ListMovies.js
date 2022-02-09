@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Youtube from 'react-youtube';
 
-import { GetMovieTrailer, GetMovieDetails } from '../Api/TmdbApi.js';
+import { GetMovieTrailer, GetMovieDetails } from '../api/TmdbApi.js';
 
 const posterDefaultPath = 'https://image.tmdb.org/t/p/w200/';
 

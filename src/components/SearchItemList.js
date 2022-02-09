@@ -1,4 +1,4 @@
-import SearchItem from '../Components/SearchItem.js';
+import SearchItem from './SearchItem.js';
 
 export default function SearchitemList(props) {
     return (

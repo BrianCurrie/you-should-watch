@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import CreateList from './Routes/CreateList.js';
-import List from './Routes/List';
+import CreateList from './routes/CreateList.js';
+import List from './routes/List';
 
 function App() {
     const [user, setUser] = useState(null);

@@ -1,4 +1,4 @@
-import '../Sass/SearchItem.scss';
+import '../sass/SearchItem.scss';
 
 export default function SearchItem(props) {
     const movie = props.movie;
