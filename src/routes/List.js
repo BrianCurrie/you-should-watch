@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { getFirestoreList } from '../api/FirestoreList.js';
 
-import Login from '../components/Login.js';
 import ListInfo from '../components/ListInfo.js';
 import ListMovies from '../components/ListMovies.js';
 
-export default function List(props) {
+export default function List() {
     const [listData, setListData] = useState({});
     const { id } = useParams();
 
@@ -18,7 +17,6 @@ export default function List(props) {
 
     return (
         <div>
-            <Login setUser={props.setUser} />
             <ListInfo listData={listData} id={id} />
             <ListMovies movies={listData.listArr} />
         </div>

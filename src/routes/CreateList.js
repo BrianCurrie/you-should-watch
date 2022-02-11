@@ -5,7 +5,7 @@ import ListAddedItems from '../components/ListAddedItems.js';
 import SearchItemList from '../components/SearchItemList.js';
 import { SearchMovies } from '../api/TmdbApi.js';
 
-import Login from '../components/Login.js';
+import style from './CreateList.module.css';
 
 function addMovie(movie, list, setList) {
     // Check if movie is already in the list
@@ -40,18 +40,20 @@ export default function CreateList(props) {
 
     return (
         <div>
-            <Login setUser={props.setUser} />
             <input
+                className={style.input}
                 type="text"
                 placeholder="Title"
                 onInput={(e) => setTitle(e.target.value)}
             />
             <input
+                className={style.input}
                 type="text"
                 placeholder="Description"
                 onInput={(e) => setDescription(e.target.value)}
             />
             <input
+                className={style.input}
                 type="text"
                 placeholder="Search..."
                 onChange={(e) => {

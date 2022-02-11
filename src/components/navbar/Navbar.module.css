@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    height: 80px;
+    background-color: #161b22;
+}
+
+.tempLogo {
+    height: fit-content;
+    color: #fff;
+    font-size: 20px;
+}
