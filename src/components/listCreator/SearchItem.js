@@ -1,4 +1,4 @@
-import '../sass/SearchItem.scss';
+import style from './SearchItem.module.css';
 
 export default function SearchItem(props) {
     const movie = props.movie;
@@ -12,18 +12,18 @@ export default function SearchItem(props) {
         : placeholderUrl;
 
     return (
-        <div className="container">
-            <img className="poster" src={posterUrl} alt={movie.title} />
-            <div className="info">
-                <div className="mainInfo">
-                    <div className="title">{movie.title}</div>
-                    <div className="year">
+        <div className={style.container}>
+            <img className={style.poster} src={posterUrl} alt={movie.title} />
+            <div className={style.info}>
+                <div className={style.mainInfo}>
+                    <div>{movie.title}</div>
+                    <div className={style.year}>
                         {date.getFullYear() ? date.getFullYear() : null}
                     </div>
                 </div>
-                <div className="description">{movie.overview}</div>
+                <div className={style.overview}>{movie.overview}</div>
             </div>
-            <button className="addBtn" onClick={props.addMovie}>
+            <button className={style.addMovieBtn} onClick={props.addMovie}>
                 +
             </button>
         </div>

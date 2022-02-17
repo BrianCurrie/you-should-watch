@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { setFirestoreList } from '../api/FirestoreList.js';
 
-import ListAddedItems from '../components/ListAddedItems.js';
-import SearchItemList from '../components/SearchItemList.js';
+import ItemSelect from '../components/listCreator/ItemSelect.js';
 import { SearchMovies } from '../api/TmdbApi.js';
 
 import style from './CreateList.module.css';
@@ -41,19 +40,19 @@ export default function CreateList(props) {
     return (
         <div>
             <input
-                className={style.input}
+                className={style.textInput}
                 type="text"
                 placeholder="Title"
                 onInput={(e) => setTitle(e.target.value)}
             />
-            <input
-                className={style.input}
+            <textarea
+                className={`${style.textInput} ${style.description}`}
                 type="text"
                 placeholder="Description"
                 onInput={(e) => setDescription(e.target.value)}
             />
             <input
-                className={style.input}
+                className={style.textInput}
                 type="text"
                 placeholder="Search..."
                 onChange={(e) => {
@@ -62,8 +61,13 @@ export default function CreateList(props) {
                     });
                 }}
             />
-            <button
-                onClick={() => {
+            <ItemSelect
+                searchEles={searchEles}
+                list={list}
+                setList={setList}
+                addMovie={addMovie}
+                removeMovie={removeMovie}
+                publish={() => {
                     publishList(
                         title,
                         description,
@@ -72,19 +76,6 @@ export default function CreateList(props) {
                         setShareLink
                     );
                 }}
-            >
-                Publish
-            </button>
-            <SearchItemList
-                searchEles={searchEles}
-                list={list}
-                setList={setList}
-                addMovie={addMovie}
-            />
-            <ListAddedItems
-                list={list}
-                setList={setList}
-                removeMovie={removeMovie}
             />
             <a href={shareLink}>{shareLink}</a>
         </div>

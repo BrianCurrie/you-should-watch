@@ -3,31 +3,32 @@ import {
     getAuth,
     onAuthStateChanged,
     GoogleAuthProvider,
-    signInWithPopup,
+    signInWithRedirect,
     signOut,
 } from 'firebase/auth';
 import Dropdown from './Dropdown.js';
 import style from './Login.module.css';
 
-async function signInUser() {
+function signInUser() {
     let provider = new GoogleAuthProvider();
-    await signInWithPopup(getAuth(), provider);
+    const auth = getAuth();
+    signInWithRedirect(auth, provider);
 }
 
 function signOutUser() {
-    signOut(getAuth());
+    const auth = getAuth();
+    signOut(auth);
 }
 
 function getImportantUserData(user) {
+    // If user is signed in
     if (user) {
-        // If user is signed in
         const uid = user.uid;
         const name = user.displayName;
         const profilePic = user.photoURL;
 
         return { uid, name, profilePic };
     } else {
-        // If user is not signed in
         return null;
     }
 }

@@ -4,15 +4,21 @@ import CreateList from './routes/CreateList.js';
 import List from './routes/List';
 import Navbar from './components/navbar/Navbar.js';
 
+import style from './App.module.css';
+
 function App() {
     const [user, setUser] = useState(null);
     return (
         <BrowserRouter>
-            <Navbar setUser={setUser} />
-            <Routes>
-                <Route path="/" element={<CreateList user={user} />} />
-                <Route path=":id" element={<List />} />
-            </Routes>
+            <div className={style.mainContainer}>
+                <div className={style.container}>
+                    <Navbar setUser={setUser} />
+                    <Routes>
+                        <Route path="/" element={<CreateList user={user} />} />
+                        <Route path=":id" element={<List />} />
+                    </Routes>
+                </div>
+            </div>
         </BrowserRouter>
     );
 }

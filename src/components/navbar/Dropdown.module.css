@@ -1,7 +1,8 @@
 .container {
     position: absolute;
-    top: 70px;
-    right: 25px;
+    top: 45px;
+    right: 8px;
+    width: max-content;
     color: #fff;
     background-color: #161b22;
     border: 1px solid #242833;
