@@ -1,3 +1,7 @@
+.container {
+    margin: 50px 0;
+}
+
 .textInput {
     display: block;
     padding: 5px;
@@ -12,6 +16,7 @@
 .description {
     height: 100px;
     width: 400px;
+    max-width: 600px;
 }
 
 .publishBtn {
@@ -25,4 +30,10 @@
 
 .publishBtn:hover {
     color: rgb(204, 204, 204);
+}
+
+@media only screen and (max-width: 1000px) {
+    .container {
+        margin: 50px;
+    }
 }

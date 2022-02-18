@@ -1,11 +1,13 @@
 .container {
     position: relative;
     display: flex;
+    height: 600px;
 }
 
 .publishBtn {
     position: absolute;
     bottom: 10px;
-    right: 10px;
+    right: 0;
     height: fit-content;
+    z-index: 99;
 }

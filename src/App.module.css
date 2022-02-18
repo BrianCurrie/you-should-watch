@@ -3,8 +3,21 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    width: inherit;
 }
 
 .container {
-    width: 1000px;
+    width: 50%;
+}
+
+@media only screen and (max-width: 1400px) {
+    .container {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .container {
+        width: 100%;
+    }
 }

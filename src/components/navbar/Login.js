@@ -3,7 +3,7 @@ import {
     getAuth,
     onAuthStateChanged,
     GoogleAuthProvider,
-    signInWithRedirect,
+    signInWithPopup,
     signOut,
 } from 'firebase/auth';
 import Dropdown from './Dropdown.js';
@@ -12,7 +12,7 @@ import style from './Login.module.css';
 function signInUser() {
     let provider = new GoogleAuthProvider();
     const auth = getAuth();
-    signInWithRedirect(auth, provider);
+    signInWithPopup(auth, provider);
 }
 
 function signOutUser() {
@@ -106,7 +106,7 @@ export default function Login(props) {
                     />
                 </div>
             ) : (
-                <button className={style.signInButton} onClick={signInUser}>
+                <button className={`btn`} onClick={signInUser}>
                     Sign In
                 </button>
             )}

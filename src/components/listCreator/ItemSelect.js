@@ -18,7 +18,7 @@ export default function ItemSelect(props) {
                 removeMovie={props.removeMovie}
             />
             <button
-                className={style.publishBtn}
+                className={`${style.publishBtn} btn`}
                 onClick={() => props.publish()}
             >
                 Publish

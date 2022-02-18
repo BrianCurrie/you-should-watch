@@ -38,7 +38,7 @@ export default function CreateList(props) {
     const [shareLink, setShareLink] = useState('');
 
     return (
-        <div>
+        <div className={style.container}>
             <input
                 className={style.textInput}
                 type="text"
