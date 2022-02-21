@@ -3,7 +3,7 @@
     width: 100%;
     border: 1px solid #242833;
     border-radius: 10px;
-    padding: 20px 15px;
+    padding: 15px;
 }
 
 .closeBtn {
@@ -15,6 +15,18 @@
     border: none;
     cursor: pointer;
     font-size: 18px;
+}
+
+.header {
+    font-size: 20px;
+}
+
+.iconContainer {
+    margin: 5px 0;
+}
+
+.iconContainer > button {
+    margin-right: 5px;
 }
 
 .urlInput {

@@ -1,5 +1,16 @@
-import React, { useState, useRef } from 'react';
-
+import React, { useRef } from 'react';
+import {
+    FacebookShareButton,
+    TwitterShareButton,
+    RedditShareButton,
+    LinkedinShareButton,
+    WhatsappShareButton,
+    FacebookIcon,
+    TwitterIcon,
+    RedditIcon,
+    LinkedinIcon,
+    WhatsappIcon,
+} from 'react-share';
 import style from './ShareMenu.module.css';
 
 function copyToClipboard(url) {
@@ -12,7 +23,49 @@ export default function ShareMenu(props) {
     const url = window.location.origin + '/' + props.id;
     return (
         <div className={style.container}>
-            <div>Share</div>
+            <div className={style.header}>Share</div>
+            <div className={style.iconContainer}>
+                <FacebookShareButton url={url}>
+                    <FacebookIcon
+                        size={32}
+                        bgStyle={{ fill: '#C4C4C4' }}
+                        iconFillColor={'#0D1117'}
+                        round={true}
+                    />
+                </FacebookShareButton>
+                <TwitterShareButton url={url}>
+                    <TwitterIcon
+                        size={32}
+                        bgStyle={{ fill: '#C4C4C4' }}
+                        iconFillColor={'#0D1117'}
+                        round={true}
+                    />
+                </TwitterShareButton>
+                <RedditShareButton url={url}>
+                    <RedditIcon
+                        size={32}
+                        bgStyle={{ fill: '#C4C4C4' }}
+                        iconFillColor={'#0D1117'}
+                        round={true}
+                    />
+                </RedditShareButton>
+                <WhatsappShareButton url={url}>
+                    <WhatsappIcon
+                        size={32}
+                        bgStyle={{ fill: '#C4C4C4' }}
+                        iconFillColor={'#0D1117'}
+                        round={true}
+                    />
+                </WhatsappShareButton>
+                <LinkedinShareButton url={url}>
+                    <LinkedinIcon
+                        size={32}
+                        bgStyle={{ fill: '#C4C4C4' }}
+                        iconFillColor={'#0D1117'}
+                        round={true}
+                    />
+                </LinkedinShareButton>
+            </div>
 
             <input
                 ref={inputEle}
