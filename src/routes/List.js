@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { getFirestoreList } from '../api/FirestoreList.js';
 
-import ListInfo from '../components/ListInfo.js';
-import ListMovies from '../components/ListMovies.js';
+import ListInfo from '../components/list/ListInfo.js';
+import ListMovies from '../components/list/ListMovies.js';
+
+import style from './List.module.css';
 
 export default function List() {
     const [listData, setListData] = useState({});
@@ -16,9 +18,11 @@ export default function List() {
     }, []);
 
     return (
-        <div>
-            <ListInfo listData={listData} id={id} />
-            <ListMovies movies={listData.listArr} />
+        <div className={style.mainContainer}>
+            <div className={style.container}>
+                <ListInfo listData={listData} id={id} />
+                <ListMovies movies={listData.listArr} />
+            </div>
         </div>
     );
 }

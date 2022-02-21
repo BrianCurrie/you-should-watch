@@ -1,0 +1,23 @@
+.mainInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 24px;
+}
+
+.userDate {
+    font-size: 14px;
+}
+
+.timeCreated {
+    color: #8d8d8d;
+}
+
+.description {
+    color: #8d8d8d;
+    margin-bottom: 20px;
+}
