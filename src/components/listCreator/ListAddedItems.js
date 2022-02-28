@@ -8,7 +8,8 @@ export default function ListAddedItems(props) {
                     <span>
                         {movie.title}
                         <span className={style.year}>
-                            {movie.release_date.substring(0, 4)}
+                            {movie.release_date &&
+                                movie.release_date.substring(0, 4)}
                         </span>
                     </span>
                     <button

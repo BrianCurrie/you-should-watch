@@ -1,5 +1,6 @@
-// Return a string in the format of "2 months ago", "last week", "in 4 years", etc.
-export default function timeAgo(date) {
+// Return a string in the format of
+// "2 months ago", "last week", "in 4 years", etc.
+function timeAgo(date) {
     const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
 
     const divisions = [
@@ -22,3 +23,13 @@ export default function timeAgo(date) {
         duration = duration / division.amount;
     }
 }
+
+// ex. Input: 145 -> Output: `2h 25m`
+function minutesToHourMinutes(time) {
+    const hours = Math.floor(time / 60);
+    const mintues = time % 60;
+
+    return `${hours}h ${mintues}m`;
+}
+
+export { timeAgo, minutesToHourMinutes };

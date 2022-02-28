@@ -1,4 +1,4 @@
-import timeAgo from '../../utils/timeAgo';
+import { timeAgo } from '../../utils/formatTime.js';
 import Share from './Share.js';
 
 import style from './ListInfo.module.css';
@@ -21,7 +21,6 @@ export default function ListInfo(props) {
             <div className={style.description}>{data.description}</div>
 
             <Share id={props.id} />
-            <hr />
         </div>
     );
 }

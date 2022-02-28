@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.modalBackground {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    position: relative;
+    z-index: 100;
+    width: min-content;
+    min-width: 500px;
+    padding: 200px 60px 60px 60px;
+    border-radius: 10px;
+    background-color: #0d1117;
+}
+
+.closeBtn {
+    position: absolute;
+    top: -20px;
+    right: -30px;
+    z-index: 150;
+    width: 25px;
+    cursor: pointer;
+}
+
+.backdrop {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.backdropImg {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.backdropTransition {
+    position: relative;
+    bottom: 100px;
+    height: 100px;
+    background: linear-gradient(#0d111700, #0d1117);
+}
+
+.mainContent {
+    position: relative;
+    z-index: 101;
+}
+
+.overview {
+    font-size: 14px;
+    margin-top: 15px;
+    color: #8d8d8d;
+}
+
+.title {
+    font-size: 24px;
+}
+
+.year {
+    font-size: 18px;
+    color: #8d8d8d;
+}
+
+.runtimeGenres {
+    margin: 10px 0px;
+    color: #8d8d8d;
+    font-size: 14px;
+}

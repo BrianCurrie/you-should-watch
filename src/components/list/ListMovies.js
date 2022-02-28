@@ -1,48 +1,32 @@
 import React, { useState } from 'react';
-import Youtube from 'react-youtube';
-
 import { GetMovieTrailer, GetMovieDetails } from '../../api/TmdbApi.js';
+import Modal from './Modal.js';
 
 const posterDefaultPath = 'https://image.tmdb.org/t/p/w200/';
-
-function minutesToHourMinutes(time) {
-    // ex. Input: 145 -> Output: `2h 25m`
-    const hours = Math.floor(time / 60);
-    const mintues = time % 60;
-
-    return `${hours}h ${mintues}m`;
-}
-
-function formatGenres(genresArr) {
-    // genresArr structure: [{"id":28,"name":"Action"}, {"id":35,"name":"Comedy"}, ...]
-    // Output: `Action, Comedy, ...`
-    let genreNames = genresArr.map((genre) => genre.name);
-    let reducer = (namesString, currName) => namesString + ', ' + currName;
-
-    return genreNames.reduce(reducer);
-}
+const backdropDefaultPath = 'https://image.tmdb.org/t/p/w780/';
 
 export default function ListMovies(props) {
     const [trailerKey, setTrailerKey] = useState();
     const [selectedMovie, setSelectedMovie] = useState();
 
+    const closeModal = () => {
+        setSelectedMovie(undefined);
+    };
+
     return (
         <div>
             {selectedMovie ? (
-                <div>
-                    <div>
-                        {selectedMovie.title}{' '}
-                        {selectedMovie.release_date.slice(0, 4)}
-                    </div>
-                    <div>
-                        {minutesToHourMinutes(selectedMovie.runtime)} |{' '}
-                        {formatGenres(selectedMovie.genres)}
-                    </div>
-                    {trailerKey ? <Youtube videoId={trailerKey} /> : undefined}
-                    <div>{selectedMovie.overview}</div>
-                </div>
+                <Modal
+                    selectedMovie={selectedMovie}
+                    trailerKey={trailerKey}
+                    closeModal={closeModal}
+                    backdrop={
+                        selectedMovie.backdrop_path
+                            ? backdropDefaultPath + selectedMovie.backdrop_path
+                            : undefined
+                    }
+                />
             ) : undefined}
-            <hr />
             {props.movies ? (
                 props.movies.map((movie) => (
                     <img
