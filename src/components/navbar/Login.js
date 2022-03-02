@@ -11,6 +11,9 @@ import style from './Login.module.css';
 
 function signInUser() {
     let provider = new GoogleAuthProvider();
+    provider.setCustomParameters({
+        prompt: 'select_account',
+    });
     const auth = getAuth();
     signInWithPopup(auth, provider);
 }

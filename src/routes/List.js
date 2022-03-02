@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { getFirestoreList } from '../api/FirestoreList.js';
 
 import ListInfo from '../components/list/ListInfo.js';
-import ListMovies from '../components/list/ListMovies.js';
+import ListMovies from '../components/list/ListPosters.js';
 
 import style from './List.module.css';
 

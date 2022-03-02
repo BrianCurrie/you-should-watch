@@ -1,0 +1,12 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 21px;
+    margin-top: 40px;
+}
+
+.poster {
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+}

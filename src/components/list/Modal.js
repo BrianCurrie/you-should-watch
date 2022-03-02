@@ -6,10 +6,15 @@ import style from './Modal.module.css';
 function formatGenres(genresArr) {
     // ex. genresArr: [{"id":28,"name":"Action"}, {"id":35,"name":"Comedy"}, ...]
     // Output: `Action, Comedy, ...`
+
+    if (genresArr.length === 0) {
+        return '';
+    }
+
     let genreNames = genresArr.map((genre) => genre.name);
     let reducer = (namesString, currName) => namesString + ', ' + currName;
 
-    return genreNames.reduce(reducer);
+    return ' | ' + genreNames.reduce(reducer);
 }
 
 export default function Modal(props) {
@@ -23,11 +28,12 @@ export default function Modal(props) {
         <div className={style.container}>
             <div onClick={props.closeModal} className={style.modalBackground} />
             <div className={style.modal}>
-                <img
-                    onClick={props.closeModal}
-                    className={style.closeBtn}
-                    src="./icons/close.png"
-                />
+                <button className={style.closeBtn} onClick={props.closeModal}>
+                    <img
+                        className={style.closeBtnImg}
+                        src="./icons/close.png"
+                    />
+                </button>
                 <div className={style.backdrop}>
                     {props.backdrop && (
                         <img
@@ -48,7 +54,7 @@ export default function Modal(props) {
                         </span>
                     </div>
                     <div className={style.runtimeGenres}>
-                        {minutesToHourMinutes(selectedMovie.runtime)} |{' '}
+                        {minutesToHourMinutes(selectedMovie.runtime)}
                         {formatGenres(selectedMovie.genres)}
                     </div>
                     {trailerKey ? (

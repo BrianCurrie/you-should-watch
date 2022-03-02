@@ -18,7 +18,7 @@
 }
 
 .modal {
-    position: relative;
+    position: fixed;
     z-index: 100;
     width: min-content;
     min-width: 500px;
@@ -28,12 +28,23 @@
 }
 
 .closeBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top: -20px;
-    right: -30px;
+    top: -25px;
+    right: -35px;
     z-index: 150;
-    width: 25px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.closeBtnImg {
+    width: inherit;
+    height: inherit;
 }
 
 .backdrop {

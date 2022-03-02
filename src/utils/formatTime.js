@@ -29,7 +29,11 @@ function minutesToHourMinutes(time) {
     const hours = Math.floor(time / 60);
     const mintues = time % 60;
 
-    return `${hours}h ${mintues}m`;
+    if (hours === 0) {
+        return `${mintues}m`;
+    } else {
+        return `${hours}h ${mintues}m`;
+    }
 }
 
 export { timeAgo, minutesToHourMinutes };
