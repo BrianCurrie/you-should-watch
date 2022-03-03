@@ -19,7 +19,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 const db = getFirestore();
 
 async function setFirestoreList(title, description, listArr, user) {
@@ -90,7 +90,7 @@ async function getFirestoreList(ref) {
         return docSnap.data();
     } else {
         console.log('Doesnt exist');
-        return [];
+        return {};
     }
 }
 

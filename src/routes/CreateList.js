@@ -26,7 +26,7 @@ function removeMovie(movie, list, setList) {
 async function publishList(title, description, list, user, setShareLink) {
     const docId = await setFirestoreList(title, description, list, user);
     if (docId) {
-        setShareLink(window.location.href + docId);
+        setShareLink(window.location.href + 'list/' + docId);
     }
 }
 

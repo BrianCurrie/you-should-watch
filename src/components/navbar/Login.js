@@ -98,6 +98,7 @@ export default function Login(props) {
                     >
                         <img
                             className={style.userImg}
+                            alt="User"
                             src={userAuth.photoURL}
                         />
                         <div className={style.dropdownArrow} />

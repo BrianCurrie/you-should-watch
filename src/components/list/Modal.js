@@ -1,6 +1,7 @@
 import Youtube from 'react-youtube';
 import { minutesToHourMinutes } from '../../utils/formatTime.js';
 
+import closeBtnImg from '../../icons/close.png';
 import style from './Modal.module.css';
 
 function formatGenres(genresArr) {
@@ -31,7 +32,8 @@ export default function Modal(props) {
                 <button className={style.closeBtn} onClick={props.closeModal}>
                     <img
                         className={style.closeBtnImg}
-                        src="./icons/close.png"
+                        alt="close"
+                        src={closeBtnImg}
                     />
                 </button>
                 <div className={style.backdrop}>
@@ -63,7 +65,7 @@ export default function Modal(props) {
                             opts={{ height: '300', width: '450' }}
                         />
                     ) : (
-                        <img alt="No image found" src={noVideoPlaceholder} />
+                        <img alt="Not found" src={noVideoPlaceholder} />
                     )}
                     <div className={style.overview}>
                         {selectedMovie.overview}

@@ -19,8 +19,8 @@ function copyToClipboard(url) {
 
 export default function ShareMenu(props) {
     const inputEle = useRef(null);
+    const url = window.location.origin + '/list/' + props.id;
 
-    const url = window.location.origin + '/' + props.id;
     return (
         <div className={style.container}>
             <div className={style.header}>Share</div>

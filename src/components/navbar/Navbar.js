@@ -6,7 +6,10 @@ export default function Navbar(props) {
     return (
         <div className={style.container}>
             <div className={style.tempLogo}>YSW</div>
-            <Login setUser={props.setUser} />
+            <div className={style.navRightContainer}>
+                <button className={'btnBorderess'}>CREATE LIST</button>
+                <Login setUser={props.setUser} />
+            </div>
         </div>
     );
 }

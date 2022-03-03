@@ -10,3 +10,7 @@
     width: 100%;
     cursor: pointer;
 }
+
+.poster:hover {
+    outline: 2px solid #565f6d;
+}

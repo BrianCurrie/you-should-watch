@@ -9,3 +9,10 @@
     width: 60%;
     margin-top: 50px;
 }
+
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}

@@ -15,7 +15,7 @@ function App() {
                     <Navbar setUser={setUser} />
                     <Routes>
                         <Route path="/" element={<CreateList user={user} />} />
-                        <Route path=":id" element={<List />} />
+                        <Route path="/list/:id" element={<List />} />
                     </Routes>
                 </div>
             </div>
