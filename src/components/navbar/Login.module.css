@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.mobileContainer {
+    display: none;
+}
+
 .user {
     display: flex;
     align-items: center;
@@ -35,4 +39,55 @@
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-top: 6px solid #fff;
+}
+
+.userMobile {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.usernameMobile {
+    margin-left: 6px;
+}
+
+.mobileRowLine {
+    width: 100%;
+    border: none;
+    height: 2px;
+    background-color: #242833;
+}
+
+.mobileBtn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dropdownContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.dropdownContainerSignedOut {
+    width: 100%;
+    padding: 5px 0px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        display: none;
+    }
+    .mobileContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

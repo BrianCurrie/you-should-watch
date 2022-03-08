@@ -4,7 +4,7 @@ import { TailSpin } from 'react-loader-spinner';
 
 import { getFirestoreList } from '../api/FirestoreList.js';
 import ListInfo from '../components/list/ListInfo.js';
-import ListMovies from '../components/list/ListPosters.js';
+import ListPosters from '../components/list/ListPosters.js';
 import ListNotFount from '../components/list/ListNotFount.js';
 import style from './List.module.css';
 
@@ -34,7 +34,7 @@ export default function List() {
                 ) : (
                     <div className={style.container}>
                         <ListInfo listData={listData} id={id} />
-                        <ListMovies movies={listData.listArr} />
+                        <ListPosters movies={listData.listArr} />
                     </div>
                 )
             ) : (

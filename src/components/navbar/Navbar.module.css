@@ -1,10 +1,23 @@
+.mainContainer {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    min-height: 80px;
+    background-color: #161b22;
+}
+
 .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
-    height: 80px;
-    background-color: #161b22;
+    min-height: 40px;
+    width: 100%;
+}
+
+.mobileContainer {
+    display: none;
+    width: 100%;
+    min-height: 40px;
 }
 
 .tempLogo {
@@ -16,4 +29,34 @@
 .navRightContainer {
     display: flex;
     align-items: center;
+}
+
+.mobileMenuBtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburgerIcon {
+    width: 30px;
+}
+
+.closeIcon {
+    width: 30px;
+}
+
+.mobileDropdown {
+    width: 100%;
+    padding: 0px 6px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        display: none;
+    }
+    .mobileContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

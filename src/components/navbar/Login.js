@@ -75,7 +75,6 @@ export default function Login(props) {
 
     const authStateObserver = () => {
         const currentUser = getAuth().currentUser;
-        console.log('User logged in:', !!currentUser, currentUser);
         setUserAuth(currentUser);
         // setUser callback to save current user info to App.js state
         props.setUser(getImportantUserData(currentUser));
@@ -87,33 +86,75 @@ export default function Login(props) {
     };
 
     return (
-        <div ref={ref} className={style.container}>
-            {!!userAuth ? (
-                <div className={style.user}>
-                    <button
-                        className={style.dropdownButton}
-                        onClick={() => {
-                            setDisplayDropdown(!displayDropdown);
-                        }}
-                    >
-                        <img
-                            className={style.userImg}
-                            alt="User"
-                            src={userAuth.photoURL}
+        <div className={style.mainContainer}>
+            <div ref={ref} className={style.container}>
+                {!!userAuth ? (
+                    <div className={style.user}>
+                        <button
+                            className={style.dropdownButton}
+                            onClick={() => {
+                                setDisplayDropdown(!displayDropdown);
+                            }}
+                        >
+                            <img
+                                className={style.userImg}
+                                alt="User"
+                                src={userAuth.photoURL}
+                            />
+                            <div className={style.dropdownArrow} />
+                        </button>
+                        <Dropdown
+                            display={displayDropdown}
+                            user={userAuth}
+                            signOut={dropdownSignOut}
                         />
-                        <div className={style.dropdownArrow} />
+                    </div>
+                ) : (
+                    <button className={`btn`} onClick={signInUser}>
+                        Sign In
                     </button>
-                    <Dropdown
-                        display={displayDropdown}
-                        user={userAuth}
-                        signOut={dropdownSignOut}
-                    />
-                </div>
-            ) : (
-                <button className={`btn`} onClick={signInUser}>
-                    Sign In
-                </button>
-            )}
+                )}
+            </div>
+            <div className={style.mobileContainer}>
+                {!!userAuth ? (
+                    <div className={style.dropdownContainer}>
+                        <div className={style.userMobile}>
+                            <img
+                                className={style.userImg}
+                                alt="User"
+                                src={userAuth.photoURL}
+                            />
+                            <div className={style.usernameMobile}>
+                                {userAuth.displayName}
+                            </div>
+                        </div>
+                        <hr className={style.mobileRowLine} />
+                        <button
+                            className={style.mobileBtn}
+                            onClick={props.createListOnClick}
+                        >
+                            Create list
+                        </button>
+                        <hr className={style.mobileRowLine} />
+                        <button
+                            className={style.mobileBtn}
+                            onClick={signOutUser}
+                        >
+                            Sign out
+                        </button>
+                    </div>
+                ) : (
+                    <div className={style.dropdownContainerSignedOut}>
+                        <hr className={style.mobileRowLine} />
+                        <button
+                            className={style.mobileBtn}
+                            onClick={signInUser}
+                        >
+                            Sign In
+                        </button>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

@@ -2,6 +2,7 @@ import Youtube from 'react-youtube';
 import { minutesToHourMinutes } from '../../utils/formatTime.js';
 
 import closeBtnImg from '../../icons/close.png';
+import videoNotFoundImg from '../../imgs/videoNotFound.png';
 import style from './Modal.module.css';
 
 function formatGenres(genresArr) {
@@ -21,9 +22,6 @@ function formatGenres(genresArr) {
 export default function Modal(props) {
     const selectedMovie = props.selectedMovie;
     const trailerKey = props.trailerKey;
-
-    const noVideoPlaceholder =
-        'https://via.placeholder.com/450x300?text=No+video+found';
 
     return (
         <div className={style.container}>
@@ -65,7 +63,7 @@ export default function Modal(props) {
                             opts={{ height: '300', width: '450' }}
                         />
                     ) : (
-                        <img alt="Not found" src={noVideoPlaceholder} />
+                        <img alt="Not found" src={videoNotFoundImg} />
                     )}
                     <div className={style.overview}>
                         {selectedMovie.overview}
