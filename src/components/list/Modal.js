@@ -58,12 +58,26 @@ export default function Modal(props) {
                         {formatGenres(selectedMovie.genres)}
                     </div>
                     {trailerKey ? (
-                        <Youtube
-                            videoId={trailerKey}
-                            opts={{ height: '300', width: '450' }}
-                        />
+                        <div>
+                            <div className={style.youtubeLarge}>
+                                <Youtube
+                                    videoId={trailerKey}
+                                    opts={{ height: '300', width: '450' }}
+                                />
+                            </div>
+                            <div className={style.youtubeSmall}>
+                                <Youtube
+                                    videoId={trailerKey}
+                                    opts={{ height: '225', width: '300' }}
+                                />
+                            </div>
+                        </div>
                     ) : (
-                        <img alt="Not found" src={videoNotFoundImg} />
+                        <img
+                            className={style.videoNotFoundImg}
+                            alt="Video not found"
+                            src={videoNotFoundImg}
+                        />
                     )}
                     <div className={style.overview}>
                         {selectedMovie.overview}
