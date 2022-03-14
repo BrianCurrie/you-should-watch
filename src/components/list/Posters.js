@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GetMovieTrailer, GetMovieDetails } from '../../api/TmdbApi.js';
 import Modal from './Modal.js';
-import style from './ListPosters.module.css';
+import style from './Posters.module.css';
 
 const posterDefaultPath = 'https://image.tmdb.org/t/p/w200/';
 const backdropDefaultPath = 'https://image.tmdb.org/t/p/w780/';

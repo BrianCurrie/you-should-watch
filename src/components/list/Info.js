@@ -1,7 +1,7 @@
 import { timeAgo } from '../../utils/formatTime.js';
 import Share from './Share.js';
 
-import style from './ListInfo.module.css';
+import style from './Info.module.css';
 
 export default function ListInfo(props) {
     const data = props.listData;

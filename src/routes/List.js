@@ -3,9 +3,9 @@ import { useParams } from 'react-router';
 import { TailSpin } from 'react-loader-spinner';
 
 import { getFirestoreList } from '../api/FirestoreList.js';
-import ListInfo from '../components/list/ListInfo.js';
-import ListPosters from '../components/list/ListPosters.js';
-import ListNotFount from '../components/list/ListNotFount.js';
+import Info from '../components/list/Info.js';
+import Posters from '../components/list/Posters.js';
+import NotFound from '../components/notFound/NotFound.js';
 import style from './List.module.css';
 
 function isEmpty(obj) {
@@ -30,11 +30,16 @@ export default function List() {
         <div className={style.mainContainer}>
             {hasLoaded ? (
                 isEmpty(listData) ? (
-                    <ListNotFount />
+                    <NotFound
+                        mainText={'Uh oh...'}
+                        subText={
+                            "We couldn't find the list you were looking for"
+                        }
+                    />
                 ) : (
                     <div className={style.container}>
-                        <ListInfo listData={listData} id={id} />
-                        <ListPosters movies={listData.listArr} />
+                        <Info listData={listData} id={id} />
+                        <Posters movies={listData.listArr} />
                     </div>
                 )
             ) : (
