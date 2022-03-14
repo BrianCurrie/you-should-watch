@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Login from './Login.js';
 
 import style from './Navbar.module.css';
-import hamburger from '../../icons/hamburger.png';
-import close from '../../icons/close.png';
+import hamburger from '../../imgs/icons/hamburger.png';
+import close from '../../imgs/icons/close.png';
 
 export default function Navbar(props) {
     let navigate = useNavigate();

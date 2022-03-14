@@ -1,8 +1,7 @@
 .container {
-    width: 400px;
     display: flex;
     flex-direction: column;
-
+    width: 400px;
     margin-bottom: 60px;
     padding: 20px;
     overflow-y: scroll;
@@ -32,4 +31,16 @@
 
 .removeBtn:hover {
     color: #242833;
+}
+
+@media only screen and (max-width: 800px) {
+    .container {
+        width: 100%;
+        max-height: 300px;
+        min-height: 120px;
+        margin: 15px 0px;
+        padding: 10px;
+        border: 2px solid #24283325;
+        border-radius: 8px;
+    }
 }

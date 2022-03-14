@@ -1,7 +1,7 @@
 import Youtube from 'react-youtube';
 import { minutesToHourMinutes } from '../../utils/formatTime.js';
 
-import closeBtnImg from '../../icons/close.png';
+import closeBtnImg from '../../imgs/icons/close.png';
 import videoNotFoundImg from '../../imgs/videoNotFound.png';
 import style from './Modal.module.css';
 
