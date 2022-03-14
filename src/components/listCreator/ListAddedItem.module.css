@@ -33,6 +33,16 @@
     color: #242833;
 }
 
+.placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #242833;
+}
+
 @media only screen and (max-width: 800px) {
     .container {
         width: 100%;
