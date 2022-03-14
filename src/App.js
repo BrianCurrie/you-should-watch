@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CreateList from './routes/CreateList.js';
 import List from './routes/List';
 import Navbar from './components/navbar/Navbar.js';
+import NotFound from './routes/NotFound.js';
 
 import style from './App.module.css';
 
@@ -14,8 +15,13 @@ function App() {
                 <div className={style.container}>
                     <Navbar setUser={setUser} />
                     <Routes>
+                        <Route path="*" element={<NotFound />} />
                         <Route path="/" element={<CreateList user={user} />} />
                         <Route path="/list/:id" element={<List />} />
+                        <Route
+                            path="/create"
+                            element={<CreateList user={user} />}
+                        />
                     </Routes>
                 </div>
             </div>

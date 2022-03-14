@@ -12,6 +12,10 @@ export default function Navbar(props) {
     const [mobileDropdownState, setMobileDropdownState] = useState(false);
 
     const createListNavigate = () => {
+        navigate('/create');
+    };
+
+    const homepageNavigate = () => {
         navigate('/');
     };
 
@@ -22,7 +26,10 @@ export default function Navbar(props) {
     return (
         <div className={style.mainContainer}>
             <div className={style.container}>
-                <div className={style.tempLogo}>YSW</div>
+                <button onClick={homepageNavigate} className={style.tempLogo}>
+                    YSW
+                </button>
+
                 <div className={style.navRightContainer}>
                     <button
                         onClick={createListNavigate}

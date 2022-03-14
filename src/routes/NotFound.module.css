@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.mainText {
+    color: #fff;
+    font-size: 24px;
+}
+
+.subText {
+    margin-top: 15px;
+    color: #8d8d8d;
+}

@@ -24,6 +24,9 @@
     height: fit-content;
     color: #fff;
     font-size: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .navRightContainer {
