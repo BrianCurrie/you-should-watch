@@ -45,13 +45,17 @@ export default function ListMovies(props) {
             {props.movies ? (
                 <div className={style.container}>
                     {props.movies.map((movie) => (
-                        <img
-                            className={style.poster}
+                        <div
                             key={movie.id}
-                            src={posterDefaultPath + movie.poster_path}
-                            alt={movie.title}
+                            className={style.poster}
                             onClick={() => handleMovieClick(movie)}
-                        />
+                        >
+                            <img
+                                className={style.posterImg}
+                                src={posterDefaultPath + movie.poster_path}
+                                alt={movie.title}
+                            />
+                        </div>
                     ))}
                 </div>
             ) : (
