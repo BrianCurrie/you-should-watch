@@ -25,22 +25,6 @@ export default function ShareMenu(props) {
         <div className={style.container}>
             <div className={style.header}>Share</div>
             <div className={style.iconContainer}>
-                <FacebookShareButton url={url}>
-                    <FacebookIcon
-                        size={32}
-                        bgStyle={{ fill: '#C4C4C4' }}
-                        iconFillColor={'#0D1117'}
-                        round={true}
-                    />
-                </FacebookShareButton>
-                <TwitterShareButton url={url}>
-                    <TwitterIcon
-                        size={32}
-                        bgStyle={{ fill: '#C4C4C4' }}
-                        iconFillColor={'#0D1117'}
-                        round={true}
-                    />
-                </TwitterShareButton>
                 <RedditShareButton url={url}>
                     <RedditIcon
                         size={32}
@@ -49,6 +33,22 @@ export default function ShareMenu(props) {
                         round={true}
                     />
                 </RedditShareButton>
+                <TwitterShareButton url={url}>
+                    <TwitterIcon
+                        size={32}
+                        bgStyle={{ fill: '#C4C4C4' }}
+                        iconFillColor={'#0D1117'}
+                        round={true}
+                    />
+                </TwitterShareButton>
+                <FacebookShareButton url={url}>
+                    <FacebookIcon
+                        size={32}
+                        bgStyle={{ fill: '#C4C4C4' }}
+                        iconFillColor={'#0D1117'}
+                        round={true}
+                    />
+                </FacebookShareButton>
                 <WhatsappShareButton url={url}>
                     <WhatsappIcon
                         size={32}

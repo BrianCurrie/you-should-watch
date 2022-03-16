@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { setFirestoreList } from '../api/FirestoreList.js';
+import { useNavigate } from 'react-router-dom';
 
 import ItemSelect from '../components/listCreator/ItemSelect.js';
 import { SearchMovies } from '../api/TmdbApi.js';
@@ -23,10 +24,20 @@ function removeMovie(movie, list, setList) {
     console.log('Removed: ', movie.title);
 }
 
-async function publishList(title, description, list, user, setShareLink) {
-    const docId = await setFirestoreList(title, description, list, user);
+function redirectToList(docId, navigate) {
+    navigate('/list/' + docId);
+}
+
+async function publishList(title, description, list, user, navigate) {
+    const docId = await setFirestoreList(
+        title,
+        description,
+        list,
+        user,
+        navigate
+    );
     if (docId) {
-        setShareLink(window.location.href + 'list/' + docId);
+        redirectToList(docId, navigate);
     }
 }
 
@@ -35,7 +46,8 @@ export default function CreateList(props) {
     const [description, setDescription] = useState('');
     const [list, setList] = useState([]);
     const [searchEles, setSearchEles] = useState([]);
-    const [shareLink, setShareLink] = useState('');
+
+    const navigate = useNavigate();
 
     return (
         <div className={style.container}>
@@ -68,16 +80,9 @@ export default function CreateList(props) {
                 addMovie={addMovie}
                 removeMovie={removeMovie}
                 publish={() => {
-                    publishList(
-                        title,
-                        description,
-                        list,
-                        props.user,
-                        setShareLink
-                    );
+                    publishList(title, description, list, props.user, navigate);
                 }}
             />
-            <a href={shareLink}>{shareLink}</a>
         </div>
     );
 }
