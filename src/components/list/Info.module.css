@@ -2,11 +2,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
 }
 
 .title {
-    font-size: 24px;
+    font-size: 30px;
 }
 
 .userDate {
@@ -19,5 +18,5 @@
 
 .description {
     color: #8d8d8d;
-    margin-bottom: 20px;
+    margin: 30px 0;
 }
