@@ -2,11 +2,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     width: inherit;
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
     width: 1000px;
 }
 

@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 50px;
+    border-top: 1px solid #242833;
+}
+
+.copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8d8d8d;
+}
+
+.githubLink {
+    width: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.githubLink:hover {
+    transform: scale(1.1);
+    transition: transform 0.4s;
+}
+
+.githubLink img {
+    width: 100%;
+}

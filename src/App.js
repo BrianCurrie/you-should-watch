@@ -4,6 +4,7 @@ import Landing from './routes/Landing.js';
 import CreateList from './routes/CreateList.js';
 import List from './routes/List';
 import Navbar from './components/navbar/Navbar.js';
+import Footer from './components/footer/Footer.js';
 import NotFound from './components/notFound/NotFound.js';
 
 import style from './App.module.css';
@@ -34,6 +35,7 @@ function App() {
                             element={<CreateList user={user} />}
                         />
                     </Routes>
+                    <Footer />
                 </div>
             </div>
         </BrowserRouter>
