@@ -62,13 +62,27 @@ export default function Modal(props) {
                             <div className={style.youtubeLarge}>
                                 <Youtube
                                     videoId={trailerKey}
-                                    opts={{ height: '300', width: '450' }}
+                                    opts={{
+                                        height: '300',
+                                        width: '450',
+                                        playerVars: {
+                                            enablejsapi: 1,
+                                            origin: window.location.href,
+                                        },
+                                    }}
                                 />
                             </div>
                             <div className={style.youtubeSmall}>
                                 <Youtube
                                     videoId={trailerKey}
-                                    opts={{ height: '225', width: '300' }}
+                                    opts={{
+                                        height: '225',
+                                        width: '300',
+                                        playerVars: {
+                                            enablejsapi: 1,
+                                            origin: window.location.href,
+                                        },
+                                    }}
                                 />
                             </div>
                         </div>

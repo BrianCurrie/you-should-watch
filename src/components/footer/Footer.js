@@ -11,8 +11,11 @@ export default function Footer() {
                     href="https://github.com/BrianCurrie/you-should-watch"
                     target="_blank"
                 >
-                    <img src={githubLogo} />
+                    <img src={githubLogo} alt="Github" />
                 </a>
+            </div>
+            <div className={style.iconAttribution}>
+                Landing image created by aslaiart - Flaticon
             </div>
         </div>
     );
