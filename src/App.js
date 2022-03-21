@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Landing from './routes/Landing.js';
 import CreateList from './routes/CreateList.js';
 import List from './routes/List';
@@ -12,7 +12,7 @@ import style from './App.module.css';
 function App() {
     const [user, setUser] = useState(null);
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className={style.mainContainer}>
                 <div className={style.container}>
                     <Navbar setUser={setUser} />
@@ -38,7 +38,7 @@ function App() {
                     <Footer />
                 </div>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
