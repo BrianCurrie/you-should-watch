@@ -96,7 +96,14 @@
 }
 
 .youtubeSmall {
+    min-height: 225px;
+    min-width: 300px;
     display: none;
+}
+
+.youtubeLarge {
+    min-height: 300px;
+    min-width: 450px;
 }
 
 @media only screen and (max-width: 650px) {
