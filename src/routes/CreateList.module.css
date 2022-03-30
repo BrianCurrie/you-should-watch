@@ -14,8 +14,9 @@
 }
 
 .description {
-    height: 100px;
-    width: 400px;
+    min-height: 100px;
+    min-width: 400px;
+    max-height: 300px;
     max-width: 600px;
 }
 
@@ -40,7 +41,7 @@
 
 @media only screen and (max-width: 800px) {
     .description {
-        width: 100%;
-        max-width: 400px;
+        min-width: 100%;
+        max-width: 100%;
     }
 }
