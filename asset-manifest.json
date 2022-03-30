@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/you-should-watch/static/css/main.d2fd6c52.css",
-    "main.js": "/you-should-watch/static/js/main.0cf7b1ca.js",
+    "main.css": "/you-should-watch/static/css/main.b0c9f0ae.css",
+    "main.js": "/you-should-watch/static/js/main.392b9ba2.js",
     "static/media/koala.png": "/you-should-watch/static/media/koala.526dbcf3db502d9ce0a6.png",
     "index.html": "/you-should-watch/index.html",
-    "main.d2fd6c52.css.map": "/you-should-watch/static/css/main.d2fd6c52.css.map",
-    "main.0cf7b1ca.js.map": "/you-should-watch/static/js/main.0cf7b1ca.js.map"
+    "main.b0c9f0ae.css.map": "/you-should-watch/static/css/main.b0c9f0ae.css.map",
+    "main.392b9ba2.js.map": "/you-should-watch/static/js/main.392b9ba2.js.map"
   },
   "entrypoints": [
-    "static/css/main.d2fd6c52.css",
-    "static/js/main.0cf7b1ca.js"
+    "static/css/main.b0c9f0ae.css",
+    "static/js/main.392b9ba2.js"
   ]
 }
