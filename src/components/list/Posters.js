@@ -5,6 +5,7 @@ import style from './Posters.module.css';
 
 const posterDefaultPath = 'https://image.tmdb.org/t/p/w200/';
 const backdropDefaultPath = 'https://image.tmdb.org/t/p/w780/';
+const posterNotFoundPath = 'https://via.placeholder.com/200x300.jpg?text=';
 
 export default function ListMovies(props) {
     const [trailerKey, setTrailerKey] = useState(undefined);
@@ -52,7 +53,11 @@ export default function ListMovies(props) {
                         >
                             <img
                                 className={style.posterImg}
-                                src={posterDefaultPath + movie.poster_path}
+                                src={
+                                    movie.poster_path
+                                        ? posterDefaultPath + movie.poster_path
+                                        : posterNotFoundPath + movie.title
+                                }
                                 alt={movie.title}
                             />
                         </div>
