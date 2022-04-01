@@ -6,7 +6,6 @@
     top: 0px;
     width: 100%;
     padding: 20px;
-    background-color: #161b22;
     border-bottom: 1px solid #242833;
 }
 
@@ -58,9 +57,14 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .mainContainer {
+        background-color: #161b22;
+    }
+
     .container {
         display: none;
     }
+
     .mobileContainer {
         display: flex;
         flex-direction: column;

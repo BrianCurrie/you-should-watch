@@ -16,17 +16,24 @@ export default function Landing() {
             <div className={style.container}>
                 <div className={style.leftContainer}>
                     <h1 className={style.mainText}>
-                        Share your Favorite Movies
+                        <span className={style.red}>Share</span> your Favorite{' '}
+                        <span className={style.blue}>Movies</span>
                     </h1>
                     <button
                         className={style.createBtn}
                         onClick={createListNavigate}
                     >
-                        Create List{' '}
+                        CREATE LIST{' '}
                         <img className={style.arrow} src={arrow} alt="Arrow" />
                     </button>
                 </div>
-                <img className={style.mainImage} src={koala} alt="Koala" />
+                <div className={style.heroContainer}>
+                    <img className={style.mainImage} src={koala} alt="Koala" />
+                    <div className={style.shapeContainer}>
+                        <div className={style.circle} />
+                        <div className={style.square} />
+                    </div>
+                </div>
             </div>
         </div>
     );

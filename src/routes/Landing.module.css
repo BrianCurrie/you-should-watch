@@ -16,10 +16,6 @@
     max-width: 400px;
 }
 
-.mainImage {
-    width: 350px;
-}
-
 .leftContainer {
     display: flex;
     flex-direction: column;
@@ -27,15 +23,15 @@
 
 .createBtn {
     display: flex;
+    align-items: center;
     width: max-content;
     color: #fff;
-    font-size: 22px;
-    padding: 8px;
+    font-size: 16px;
+    padding: 8px 24px;
     border: none;
-    border-radius: 6px;
-    background: linear-gradient(to left, #b51f24, #24356e);
+    border-radius: 20px;
+    background-color: #b51f24;
     cursor: pointer;
-    margin-top: 8px;
 }
 
 .createBtn:hover {
@@ -44,20 +40,72 @@
 
 .arrow {
     margin-left: 8px;
+    height: 22px;
+}
+
+.heroContainer {
+    position: relative;
+    width: min-content;
+}
+
+.shapeContainer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.mainImage {
+    position: relative;
+    width: 250px;
+    z-index: 10;
+}
+
+.circle {
+    position: absolute;
+    left: -25px;
+    top: -25px;
+    width: 80%;
+    height: 80%;
+    background-color: #b51f2488;
+    border-radius: 100px;
+}
+
+.square {
+    position: absolute;
+    right: -25px;
+    bottom: -25px;
+    width: 75%;
+    height: 75%;
+    background-color: #24356e88;
 }
 
 @media only screen and (max-width: 800px) {
     .container {
-        width: 100%;
         justify-content: center;
+    }
+
+    .red {
+        color: #e01e24;
+    }
+
+    .blue {
+        color: #214bd6;
     }
 
     .mainText {
         margin: 0 8px;
+        font-size: 42px;
+    }
+
+    .arrow {
+        height: 20px;
     }
 
     .createBtn {
-        margin-top: 20px;
+        margin-top: 40px;
+        font-size: 14px;
     }
 
     .mainImage {
