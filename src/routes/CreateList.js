@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { setFirestoreList } from '../api/FirestoreList.js';
 import { useNavigate } from 'react-router-dom';
 
@@ -41,11 +41,29 @@ async function publishList(title, description, list, user, navigate) {
     }
 }
 
+function filterSearch(searchEles, sortBy) {
+    // Filter movies without a release date
+    let arr = [...searchEles].filter((movie) => movie.release_date);
+    switch (sortBy) {
+        case 'newest':
+            return arr.sort(
+                (a, b) => new Date(b.release_date) - new Date(a.release_date)
+            );
+        case 'oldest':
+            return arr.sort(
+                (a, b) => new Date(a.release_date) - new Date(b.release_date)
+            );
+        default:
+            return arr.sort((a, b) => b.popularity - a.popularity);
+    }
+}
+
 export default function CreateList(props) {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [list, setList] = useState([]);
     const [searchEles, setSearchEles] = useState([]);
+    const [sortBy, setSortBy] = useState('popular');
 
     const navigate = useNavigate();
 
@@ -63,16 +81,34 @@ export default function CreateList(props) {
                 placeholder="Description"
                 onInput={(e) => setDescription(e.target.value)}
             />
-            <input
-                className={style.textInput}
-                type="text"
-                placeholder="Search..."
-                onChange={(e) => {
-                    SearchMovies(e.target.value).then((res) => {
-                        setSearchEles(res.data ? res.data.results : []);
-                    });
-                }}
-            />
+            <div className={style.searchContainer}>
+                <input
+                    className={`${style.textInput} ${style.search}`}
+                    type="text"
+                    placeholder="Search..."
+                    onChange={(e) => {
+                        SearchMovies(e.target.value).then((res) => {
+                            setSearchEles(
+                                res.data
+                                    ? filterSearch(res.data.results, sortBy)
+                                    : []
+                            );
+                        });
+                    }}
+                />
+                <select
+                    className={style.sortBySelect}
+                    value={sortBy}
+                    onChange={(e) => {
+                        setSortBy(e.target.value);
+                        setSearchEles(filterSearch(searchEles, e.target.value));
+                    }}
+                >
+                    <option value="popular">Popular</option>
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                </select>
+            </div>
             <ItemSelect
                 searchEles={searchEles}
                 list={list}
