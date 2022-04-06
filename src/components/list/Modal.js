@@ -26,7 +26,11 @@ export default function Modal(props) {
     return (
         <div className={style.container}>
             <div onClick={props.closeModal} className={style.modalBackground} />
-            <div className={style.modal}>
+            <div
+                className={`${style.modal} ${
+                    props.backdrop ? style.headerSpacing : style.headerNoSpacing
+                }`}
+            >
                 <button className={style.closeBtn} onClick={props.closeModal}>
                     <img
                         className={style.closeBtnImg}
@@ -93,8 +97,28 @@ export default function Modal(props) {
                             src={videoNotFoundImg}
                         />
                     )}
+
                     <div className={style.overview}>
                         {selectedMovie.overview}
+                    </div>
+
+                    <div className={style.movieLinksContainer}>
+                        {selectedMovie.imdb_id && (
+                            <a
+                                className={style.movieLinks}
+                                href={`https://www.imdb.com/title/${selectedMovie.imdb_id}`}
+                            >
+                                IMDB
+                            </a>
+                        )}
+                        {props.id && (
+                            <a
+                                className={style.movieLinks}
+                                href={`https://www.themoviedb.org/movie/${props.id}`}
+                            >
+                                TMDB
+                            </a>
+                        )}
                     </div>
                 </div>
             </div>

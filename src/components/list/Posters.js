@@ -10,9 +10,11 @@ const posterNotFoundPath = 'https://via.placeholder.com/200x300.jpg?text=';
 export default function ListMovies(props) {
     const [trailerKey, setTrailerKey] = useState(undefined);
     const [selectedMovie, setSelectedMovie] = useState();
+    const [selectedMovieId, setSelectMovieId] = useState();
 
     const closeModal = () => {
         setSelectedMovie(undefined);
+        setSelectMovieId(undefined);
     };
 
     const handleMovieClick = (movie) => {
@@ -27,12 +29,14 @@ export default function ListMovies(props) {
         });
 
         GetMovieDetails(movie.id).then((res) => setSelectedMovie(res));
+        setSelectMovieId(movie.id);
     };
 
     return (
         <div>
             {selectedMovie ? (
                 <Modal
+                    id={selectedMovieId}
                     selectedMovie={selectedMovie}
                     trailerKey={trailerKey}
                     closeModal={closeModal}
