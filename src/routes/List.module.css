@@ -3,12 +3,13 @@
     flex-direction: column;
     align-items: center;
     color: #fff;
-    min-height: max-content;
+    flex-grow: 1;
+    margin-top: 50px;
 }
 
 .container {
     width: 50%;
-    margin-top: 50px;
+    height: 100%;
 }
 
 .spinnerContainer {
@@ -18,7 +19,7 @@
     height: 50vh;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     .container {
         width: 80%;
     }
