@@ -107,6 +107,7 @@ export default function Login(props) {
                             display={displayDropdown}
                             user={userAuth}
                             signOut={dropdownSignOut}
+                            hideDropdown={() => setDisplayDropdown(false)}
                         />
                     </div>
                 ) : (
@@ -133,14 +134,21 @@ export default function Login(props) {
                             className={style.mobileBtn}
                             onClick={props.createListOnClick}
                         >
-                            Create list
+                            Create List
+                        </button>
+                        <hr className={style.mobileRowLine} />
+                        <button
+                            className={style.mobileBtn}
+                            onClick={() => props.myListsOnClick(userAuth.uid)}
+                        >
+                            My Lists
                         </button>
                         <hr className={style.mobileRowLine} />
                         <button
                             className={style.mobileBtn}
                             onClick={signOutUser}
                         >
-                            Sign out
+                            Sign Out
                         </button>
                     </div>
                 ) : (

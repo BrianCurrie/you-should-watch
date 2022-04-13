@@ -28,7 +28,7 @@
     display: none;
 }
 
-.signOutButton {
+.dropdownButton {
     color: inherit;
     background-color: transparent;
     border: none;
@@ -37,7 +37,7 @@
     cursor: pointer;
 }
 
-.signOutButton:hover {
+.dropdownButton:hover {
     color: rgb(204, 204, 204);
 }
 

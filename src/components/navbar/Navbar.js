@@ -23,6 +23,10 @@ export default function Navbar(props) {
         setMobileDropdownState(!mobileDropdownState);
     };
 
+    const myListsNavigate = (uid) => {
+        navigate('/user/' + uid);
+    };
+
     return (
         <div className={style.mainContainer}>
             <div className={style.container}>
@@ -65,6 +69,10 @@ export default function Navbar(props) {
                             setUser={props.setUser}
                             createListOnClick={() => {
                                 createListNavigate();
+                                setMobileDropdownState(false);
+                            }}
+                            myListsOnClick={(uid) => {
+                                myListsNavigate(uid);
                                 setMobileDropdownState(false);
                             }}
                         />
