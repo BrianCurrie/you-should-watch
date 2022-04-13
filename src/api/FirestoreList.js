@@ -34,7 +34,14 @@ async function setFirestoreList(title, description, listArr, user) {
                 timeCreated,
             });
             console.log('Document added, ID: ', docRef.id);
-            addToUsersLists(user, docRef.id);
+            const listPreview = {
+                id: docRef.id,
+                title,
+                description,
+                timeCreated,
+                listArr,
+            };
+            addToUsersLists(user, listPreview);
             return docRef.id;
         } catch (e) {
             console.error('Error adding doc: ', e);
@@ -44,41 +51,36 @@ async function setFirestoreList(title, description, listArr, user) {
     }
 }
 
-async function addToUsersLists(user, listRef) {
-    let id;
-
-    if (user) {
-        id = user.uid;
-    } else {
-        user = null;
-        id = 'default';
-        console.log('Added list to non-logged in users list');
+async function addToUsersLists(user, listPreview) {
+    if (!user) {
+        return undefined;
     }
 
-    const listArr = await getUsersLists(id);
-    listArr.push(listRef);
+    let id = user.uid;
+
+    const data = await getUsersData(id);
+    if (data.lists) {
+        data.lists.push(listPreview);
+    }
     const userRef = doc(db, 'users', id);
     setDoc(
         userRef,
         {
             user,
-            lists: listArr,
+            lists: data.lists,
         },
         { merge: true }
     );
-    console.log('Adding to users list', listRef);
+    console.log('Adding to users list', listPreview);
 }
 
-async function getUsersLists(id) {
+async function getUsersData(id) {
     const docRef = doc(db, 'users', id);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
         console.log(docSnap.data());
-        return docSnap.data().lists;
-    } else {
-        console.log('User: ' + id + ' does not have any lists');
-        return [];
+        return docSnap.data();
     }
 }
 
@@ -94,4 +96,4 @@ async function getFirestoreList(ref) {
     }
 }
 
-export { setFirestoreList, getFirestoreList };
+export { setFirestoreList, getFirestoreList, getUsersData };

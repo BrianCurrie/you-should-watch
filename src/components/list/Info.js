@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { timeAgo } from '../../utils/formatTime.js';
 import Share from './Share.js';
 
 import style from './Info.module.css';
 
 export default function ListInfo(props) {
+    const navigate = useNavigate();
     const data = props.listData;
     return (
         <div className={style.container}>
@@ -12,7 +14,20 @@ export default function ListInfo(props) {
                     {data.title ? data.title : 'Untitled'}
                 </div>
                 <div className={style.userDate}>
-                    <div>{data.user ? data.user.name : 'Anonymous'}</div>
+                    <div>
+                        {data.user ? (
+                            <button
+                                className={style.usernameBtn}
+                                onClick={() =>
+                                    navigate('/user/' + data.user.uid)
+                                }
+                            >
+                                {data.user.name}
+                            </button>
+                        ) : (
+                            'Anonymous'
+                        )}
+                    </div>
                     <div className={style.timeCreated}>
                         {timeAgo(data.timeCreated)}
                     </div>

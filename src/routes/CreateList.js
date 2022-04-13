@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { setFirestoreList } from '../api/FirestoreList.js';
 import { useNavigate } from 'react-router-dom';
 

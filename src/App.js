@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import Landing from './routes/Landing.js';
 import CreateList from './routes/CreateList.js';
-import List from './routes/List';
+import List from './routes/List.js';
+import User from './routes/User.js';
 import Navbar from './components/navbar/Navbar.js';
 import Footer from './components/footer/Footer.js';
 import NotFound from './components/notFound/NotFound.js';
@@ -34,6 +35,7 @@ function App() {
                             path="/create"
                             element={<CreateList user={user} />}
                         />
+                        <Route path="/user/:id" element={<User />} />
                     </Routes>
                     <Footer />
                 </div>

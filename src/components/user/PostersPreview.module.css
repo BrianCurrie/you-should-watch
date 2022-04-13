@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: 180px;
+    min-width: 180px;
+    height: max-content;
+}
+
+.posterContainer {
+    overflow-x: hidden;
+}
+
+.posterContainer:last-child {
+    flex: 0 0 auto;
+}
+
+.posterContainer:not(:first-child) {
+    box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.829);
+}
+
+.poster {
+    border-radius: 5px;
+    width: 80px;
+    height: auto;
+}
+
+@media only screen and (max-width: 800px) {
+    .container {
+        width: 135px;
+        min-width: 135px;
+    }
+
+    .poster {
+        width: 60px;
+    }
+}

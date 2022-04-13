@@ -21,3 +21,16 @@
     color: #8d8d8d;
     margin: 30px 0;
 }
+
+.usernameBtn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
+    cursor: pointer;
+}
+
+.usernameBtn:hover {
+    color: rgb(204, 204, 204);
+    text-decoration: underline;
+}
