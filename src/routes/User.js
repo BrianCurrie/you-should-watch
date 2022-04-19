@@ -18,7 +18,7 @@ export default function User() {
             if (data) {
                 setData(data);
                 // Show lists that have full obj information
-                setLists(data.lists.filter((list) => list.id));
+                setLists(data.lists.filter((list) => list.id).reverse());
                 console.log(data.lists.filter((list) => list.id));
                 setHasLoaded(true);
             }

@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.chevron {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+}
+
+.chevronImg {
+    height: 100%;
+    width: 100%;
+}
+
+.pageTracker {
+    font-size: 16px;
+    color: #8d8d8d;
+}
+
+@media only screen and (max-width: 800px) {
+    .chevron {
+        height: 25px;
+    }
+
+    .pageTracker {
+        font-size: 14px;
+    }
+}

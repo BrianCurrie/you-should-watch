@@ -1,12 +1,39 @@
 import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import PostersPreview from './PostersPreview.js';
+import PageNav from './PageNav.js';
 import { timeAgo } from '../../utils/formatTime.js';
+
 import style from './ListPreview.module.css';
 
 export default function ListPreview(props) {
+    const [page, setPage] = useState(0);
     const navigate = useNavigate();
+
+    // How many lists to display per page
+    const listsPerPage = 4;
+    const totalPages = Math.ceil(props.masterList.length / listsPerPage);
+
+    const leftOnClick = () => {
+        if (page - 1 >= 0) {
+            setPage(page - 1);
+        }
+    };
+
+    const rightOnClick = () => {
+        if (page + 1 < totalPages) {
+            setPage(page + 1);
+        }
+    };
+
     return (
         <div>
+            <PageNav
+                leftOnClick={leftOnClick}
+                rightOnClick={rightOnClick}
+                page={page}
+                totalPages={totalPages}
+            />
             {props.masterList
                 .map((list) => (
                     <div
@@ -34,7 +61,7 @@ export default function ListPreview(props) {
                         </div>
                     </div>
                 ))
-                .reverse()}
+                .slice(page * listsPerPage, page * listsPerPage + listsPerPage)}
         </div>
     );
 }
