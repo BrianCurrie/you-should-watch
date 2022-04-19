@@ -13,23 +13,33 @@ export default function ListInfo(props) {
                 <div className={style.title}>
                     {data.title ? data.title : 'Untitled'}
                 </div>
-                <div className={style.userDate}>
-                    <div>
-                        {data.user ? (
-                            <button
-                                className={style.usernameBtn}
-                                onClick={() =>
-                                    navigate('/user/' + data.user.uid)
-                                }
-                            >
-                                {data.user.name}
-                            </button>
-                        ) : (
-                            'Anonymous'
-                        )}
-                    </div>
-                    <div className={style.timeCreated}>
-                        {timeAgo(data.timeCreated)}
+                <div className={style.userContainer}>
+                    {data.user && (
+                        <img
+                            className={style.userImg}
+                            onClick={() => navigate('/user/' + data.user.uid)}
+                            alt="User"
+                            src={data.user.profilePic}
+                        />
+                    )}
+                    <div className={style.userDate}>
+                        <div>
+                            {data.user ? (
+                                <button
+                                    className={style.usernameBtn}
+                                    onClick={() =>
+                                        navigate('/user/' + data.user.uid)
+                                    }
+                                >
+                                    {data.user.name}
+                                </button>
+                            ) : (
+                                'Anonymous'
+                            )}
+                        </div>
+                        <div className={style.timeCreated}>
+                            {timeAgo(data.timeCreated)}
+                        </div>
                     </div>
                 </div>
             </div>

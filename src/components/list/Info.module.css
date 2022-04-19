@@ -9,8 +9,14 @@
     margin-right: 6px;
 }
 
+.userContainer {
+    display: flex;
+    align-items: center;
+}
+
 .userDate {
     font-size: 14px;
+    margin-left: 6px;
 }
 
 .timeCreated {
@@ -34,4 +40,10 @@
 .usernameBtn:hover {
     color: rgb(204, 204, 204);
     text-decoration: underline;
+}
+
+.userImg {
+    height: 40px;
+    border-radius: 100px;
+    cursor: pointer;
 }
