@@ -160,6 +160,13 @@ export default function Login(props) {
                         >
                             Sign In
                         </button>
+                        <hr className={style.mobileRowLine} />
+                        <button
+                            onClick={props.createListOnClick}
+                            className={style.mobileBtn}
+                        >
+                            Create List
+                        </button>
                     </div>
                 )}
             </div>
