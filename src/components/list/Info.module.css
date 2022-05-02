@@ -4,9 +4,43 @@
     justify-content: space-between;
 }
 
+.titleContainer {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
 .title {
     font-size: 26px;
+}
+
+.vertMenu {
     margin-right: 6px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 4px 0 0 0;
+    --fillColor: #fff;
+}
+
+.vertMenu:hover {
+    --fillColor: rgb(204, 204, 204);
+}
+
+.vertMenuImg {
+    height: 25px;
+}
+
+.deleteBtn {
+    position: absolute;
+    bottom: -50px;
+    right: -8px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.deleteBtn:hover {
+    color: rgb(204, 204, 204);
 }
 
 .userContainer {

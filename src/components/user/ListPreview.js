@@ -12,7 +12,10 @@ export default function ListPreview(props) {
 
     // How many lists to display per page
     const listsPerPage = 4;
-    const totalPages = Math.ceil(props.masterList.length / listsPerPage);
+    const totalPages =
+        props.masterList.length != 0
+            ? Math.ceil(props.masterList.length / listsPerPage)
+            : 1;
 
     const leftOnClick = () => {
         if (page - 1 >= 0) {

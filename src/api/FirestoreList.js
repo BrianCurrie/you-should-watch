@@ -56,13 +56,13 @@ async function addToUsersLists(user, listPreview) {
         return undefined;
     }
 
-    let id = user.uid;
+    let userId = user.uid;
 
-    const data = await getUsersData(id);
+    let data = await getUsersData(userId);
     if (data.lists) {
         data.lists.push(listPreview);
     }
-    const userRef = doc(db, 'users', id);
+    const userRef = doc(db, 'users', userId);
     setDoc(
         userRef,
         {
@@ -74,8 +74,37 @@ async function addToUsersLists(user, listPreview) {
     console.log('Adding to users list', listPreview);
 }
 
-async function getUsersData(id) {
-    const docRef = doc(db, 'users', id);
+// Remove a specific list from displaying on a user's lists page
+async function removeFromUsersLists(user, listId) {
+    if (!user) {
+        return undefined;
+    }
+
+    let userId = user.uid;
+
+    let data = await getUsersData(userId);
+    let updatedList;
+
+    if (data.lists) {
+        updatedList = data.lists.filter((list) => list.id != listId);
+    }
+
+    const userRef = doc(db, 'users', userId);
+
+    console.log('Updated user list, removed list Id:', listId);
+
+    return setDoc(
+        userRef,
+        {
+            user,
+            lists: updatedList,
+        },
+        { merge: true }
+    );
+}
+
+async function getUsersData(userId) {
+    const docRef = doc(db, 'users', userId);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -96,4 +125,9 @@ async function getFirestoreList(ref) {
     }
 }
 
-export { setFirestoreList, getFirestoreList, getUsersData };
+export {
+    setFirestoreList,
+    getFirestoreList,
+    getUsersData,
+    removeFromUsersLists,
+};

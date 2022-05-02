@@ -16,6 +16,7 @@ body {
 
 #root {
     height: min-content;
+    overflow-y: scroll;
 }
 
 .btn {
@@ -43,6 +44,25 @@ body {
 .btn:hover,
 .btnBorderess:hover {
     color: rgb(204, 204, 204);
+}
+
+.dropdownMenu {
+    width: max-content;
+    color: #fff;
+    background-color: #161b22;
+    border: 1px solid #242833;
+    box-shadow: 0 8px 24px #010400;
+    border-radius: 10px;
+}
+
+.dropdownMenu::after {
+    content: '';
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #242833;
+    top: -10px;
+    right: 15px;
 }
 
 ::-webkit-scrollbar-track {

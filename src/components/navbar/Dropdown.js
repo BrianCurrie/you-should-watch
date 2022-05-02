@@ -9,7 +9,7 @@ export default function Dropdown(props) {
         : style.dropdownInactive;
 
     return (
-        <div className={`${style.container} ${display}`}>
+        <div className={`dropdownMenu ${style.container} ${display}`}>
             <div className={style.signedIn}>Signed in as</div>
             <div>{props.user.displayName}</div>
             <hr className={style.line} />

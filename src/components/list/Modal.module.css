@@ -24,6 +24,7 @@
     min-width: 500px;
     border-radius: 10px;
     background-color: #0d1117;
+    box-shadow: 0 8px 24px #010400;
 }
 
 .headerSpacing {
