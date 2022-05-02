@@ -50,7 +50,7 @@ export default function ListInfo(props) {
     // Check if the current user is the owner of a list
     // so we can conditionally render the delete option
     const isListOwner = () => {
-        if (getAuth().currentUser) {
+        if (getAuth().currentUser && props.listData.user) {
             return getAuth().currentUser.uid === props.listData.user.uid;
         } else {
             return false;
