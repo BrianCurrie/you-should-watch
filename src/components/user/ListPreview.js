@@ -37,34 +37,43 @@ export default function ListPreview(props) {
                 page={page}
                 totalPages={totalPages}
             />
-            {props.masterList
-                .map((list) => (
-                    <div
-                        className={style.listContainer}
-                        key={list.id}
-                        onClick={() => navigate('/list/' + list.id)}
-                    >
-                        <PostersPreview
-                            posterPaths={list.listArr.map(
-                                (list) => list.poster_path
-                            )}
-                        />
-                        <div className={style.listInfo}>
-                            <div className={style.mainInfoContainer}>
-                                <span className={style.title}>
-                                    {list.title ? list.title : 'Untitled'}
-                                </span>
-                                <span className={style.timeAgo}>
-                                    {timeAgo(list.timeCreated)}
-                                </span>
-                            </div>
-                            <div className={style.description}>
-                                {list.description}
+            {props.masterList.length > 0 ? (
+                props.masterList
+                    .map((list) => (
+                        <div
+                            className={style.listContainer}
+                            key={list.id}
+                            onClick={() => navigate('/list/' + list.id)}
+                        >
+                            <PostersPreview
+                                posterPaths={list.listArr.map(
+                                    (list) => list.poster_path
+                                )}
+                            />
+                            <div className={style.listInfo}>
+                                <div className={style.mainInfoContainer}>
+                                    <span className={style.title}>
+                                        {list.title ? list.title : 'Untitled'}
+                                    </span>
+                                    <span className={style.timeAgo}>
+                                        {timeAgo(list.timeCreated)}
+                                    </span>
+                                </div>
+                                <div className={style.description}>
+                                    {list.description}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))
-                .slice(page * listsPerPage, page * listsPerPage + listsPerPage)}
+                    ))
+                    .slice(
+                        page * listsPerPage,
+                        page * listsPerPage + listsPerPage
+                    )
+            ) : (
+                <div className={style.notFoundContainer}>
+                    <div>No lists found</div>
+                </div>
+            )}
         </div>
     );
 }
