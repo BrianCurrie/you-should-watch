@@ -59,15 +59,16 @@ async function addToUsersLists(user, listPreview) {
     let userId = user.uid;
 
     let data = await getUsersData(userId);
-    if (data.lists) {
+    if (data) {
         data.lists.push(listPreview);
     }
+
     const userRef = doc(db, 'users', userId);
     setDoc(
         userRef,
         {
             user,
-            lists: data.lists,
+            lists: data ? data.lists : [listPreview],
         },
         { merge: true }
     );
