@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Login from './Login.js';
 
 import style from './Navbar.module.css';
-import hamburger from '../../imgs/icons/hamburger.png';
-import close from '../../imgs/icons/close.png';
+import { ReactComponent as Hamburger } from '../../imgs/icons/hamburger.svg';
+import { ReactComponent as Close } from '../../imgs/icons/close.svg';
 
 export default function Navbar(props) {
     let navigate = useNavigate();
@@ -49,19 +49,7 @@ export default function Navbar(props) {
                     onClick={mobileMenuBtnClick}
                     className={style.mobileMenuBtn}
                 >
-                    {mobileDropdownState ? (
-                        <img
-                            className={style.closeIcon}
-                            alt="close nav"
-                            src={close}
-                        />
-                    ) : (
-                        <img
-                            className={style.hamburgerIcon}
-                            alt="open nav"
-                            src={hamburger}
-                        />
-                    )}
+                    {mobileDropdownState ? <Close /> : <Hamburger />}
                 </button>
                 {mobileDropdownState && (
                     <div className={style.mobileDropdown}>

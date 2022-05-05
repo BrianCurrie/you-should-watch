@@ -53,6 +53,7 @@ body {
     border: 1px solid #242833;
     box-shadow: 0 8px 24px #010400;
     border-radius: 10px;
+    z-index: 30;
 }
 
 .dropdownMenu::after {

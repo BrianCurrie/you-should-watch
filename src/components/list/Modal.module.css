@@ -43,16 +43,22 @@
     top: -25px;
     right: -35px;
     z-index: 150;
-    width: 30px;
     height: 30px;
+    width: 30px;
+    padding: 0px;
     cursor: pointer;
     background-color: transparent;
+    --fillColor: #fff;
     border: none;
 }
 
-.closeBtnImg {
-    width: inherit;
+.closeBtn:hover {
+    --fillColor: rgb(204, 204, 204);
+}
+
+.closeBtn > svg {
     height: inherit;
+    width: inherit;
 }
 
 .backdrop {

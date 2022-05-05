@@ -9,6 +9,7 @@
 
 .item {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 5px;
@@ -22,15 +23,25 @@
 }
 
 .removeBtn {
-    color: #2e333f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: transparent;
     border: none;
-    font-size: 18px;
+    height: inherit;
+    width: auto;
+    padding: 0px;
+    --fillColor: #2e333f;
     cursor: pointer;
 }
 
+.removeBtn > svg {
+    height: inherit;
+    width: inherit;
+}
+
 .removeBtn:hover {
-    color: #242833;
+    --fillColor: #242833;
 }
 
 .placeholder {
@@ -49,7 +60,7 @@
         max-height: 300px;
         min-height: 120px;
         margin: 15px 0px;
-        padding: 10px;
+        padding: 6px;
         border: 2px solid #24283325;
         border-radius: 8px;
     }

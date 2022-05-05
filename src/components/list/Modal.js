@@ -1,7 +1,6 @@
 import Youtube from 'react-youtube';
 import { minutesToHourMinutes } from '../../utils/formatTime.js';
-
-import closeBtnImg from '../../imgs/icons/close.png';
+import { ReactComponent as Close } from '../../imgs/icons/close.svg';
 import videoNotFoundImg from '../../imgs/videoNotFound.png';
 import style from './Modal.module.css';
 
@@ -32,11 +31,7 @@ export default function Modal(props) {
                 }`}
             >
                 <button className={style.closeBtn} onClick={props.closeModal}>
-                    <img
-                        className={style.closeBtnImg}
-                        alt="close"
-                        src={closeBtnImg}
-                    />
+                    <Close fill="var(--fillColor)" />
                 </button>
                 <div className={style.backdrop}>
                     {props.backdrop && (

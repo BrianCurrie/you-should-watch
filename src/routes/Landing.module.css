@@ -24,6 +24,7 @@
 .createBtn {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: max-content;
     color: #fff;
     font-size: 16px;
@@ -32,15 +33,21 @@
     border-radius: 20px;
     background-color: #b51f24;
     cursor: pointer;
+    --fillColor: #fff;
 }
 
 .createBtn:hover {
     color: rgb(204, 204, 204);
 }
 
-.arrow {
-    margin-left: 8px;
+.createBtn > svg {
     height: 22px;
+    width: 22px;
+    margin-left: 8px;
+}
+
+.createBtn:hover > svg {
+    --fillColor: rgb(204, 204, 204);
 }
 
 .heroContainer {
@@ -99,13 +106,14 @@
         font-size: 42px;
     }
 
-    .arrow {
-        height: 20px;
-    }
-
     .createBtn {
         margin-top: 40px;
         font-size: 14px;
+    }
+
+    .createBtn > svg {
+        height: 20px;
+        width: 20px;
     }
 
     .mainImage {

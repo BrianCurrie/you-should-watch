@@ -11,6 +11,8 @@ import {
     LinkedinIcon,
     WhatsappIcon,
 } from 'react-share';
+import { ReactComponent as Close } from '../../imgs/icons/close.svg';
+
 import style from './ShareMenu.module.css';
 
 function copyToClipboard(url) {
@@ -26,44 +28,19 @@ export default function ShareMenu(props) {
             <div className={style.header}>Share</div>
             <div className={style.iconContainer}>
                 <RedditShareButton url={url}>
-                    <RedditIcon
-                        size={32}
-                        bgStyle={{ fill: '#C4C4C4' }}
-                        iconFillColor={'#0D1117'}
-                        round={true}
-                    />
+                    <RedditIcon size={32} round={true} />
                 </RedditShareButton>
                 <TwitterShareButton url={url}>
-                    <TwitterIcon
-                        size={32}
-                        bgStyle={{ fill: '#C4C4C4' }}
-                        iconFillColor={'#0D1117'}
-                        round={true}
-                    />
+                    <TwitterIcon size={32} round={true} />
                 </TwitterShareButton>
                 <FacebookShareButton url={url}>
-                    <FacebookIcon
-                        size={32}
-                        bgStyle={{ fill: '#C4C4C4' }}
-                        iconFillColor={'#0D1117'}
-                        round={true}
-                    />
+                    <FacebookIcon size={32} round={true} />
                 </FacebookShareButton>
                 <WhatsappShareButton url={url}>
-                    <WhatsappIcon
-                        size={32}
-                        bgStyle={{ fill: '#C4C4C4' }}
-                        iconFillColor={'#0D1117'}
-                        round={true}
-                    />
+                    <WhatsappIcon size={32} round={true} />
                 </WhatsappShareButton>
                 <LinkedinShareButton url={url}>
-                    <LinkedinIcon
-                        size={32}
-                        bgStyle={{ fill: '#C4C4C4' }}
-                        iconFillColor={'#0D1117'}
-                        round={true}
-                    />
+                    <LinkedinIcon size={32} round={true} />
                 </LinkedinShareButton>
             </div>
 
@@ -94,7 +71,7 @@ export default function ShareMenu(props) {
                     props.toggleView();
                 }}
             >
-                X
+                <Close fill="var(--fillColor)" />
             </button>
         </div>
     );

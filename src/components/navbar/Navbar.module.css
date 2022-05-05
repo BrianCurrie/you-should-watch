@@ -39,17 +39,20 @@
 }
 
 .mobileMenuBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
 }
 
-.hamburgerIcon {
-    width: 30px;
-}
-
-.closeIcon {
-    width: 30px;
+.mobileMenuBtn > svg {
+    height: inherit;
+    width: inherit;
 }
 
 .mobileDropdown {

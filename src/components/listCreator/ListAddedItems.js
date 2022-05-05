@@ -1,3 +1,4 @@
+import { ReactComponent as Close } from '../../imgs/icons/close.svg';
 import style from './ListAddedItem.module.css';
 
 export default function ListAddedItems(props) {
@@ -23,7 +24,7 @@ export default function ListAddedItems(props) {
                                 )
                             }
                         >
-                            X
+                            <Close fill="var(--fillColor)" />
                         </button>
                     </div>
                 ))

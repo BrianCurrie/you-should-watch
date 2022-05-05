@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import style from './Landing.module.css';
 import koala from '../imgs/koala.png';
-import arrow from '../imgs/icons/rightArrow.png';
+import { ReactComponent as Arrow } from '../imgs/icons/arrowRight.svg';
 
 export default function Landing() {
     let navigate = useNavigate();
@@ -23,8 +23,7 @@ export default function Landing() {
                         className={style.createBtn}
                         onClick={createListNavigate}
                     >
-                        CREATE LIST{' '}
-                        <img className={style.arrow} src={arrow} alt="Arrow" />
+                        CREATE LIST <Arrow fill="var(--fillColor)" />
                     </button>
                 </div>
                 <div className={style.heroContainer}>
