@@ -1,15 +1,20 @@
 {
   "files": {
-    "main.css": "/you-should-watch/static/css/main.325031cd.css",
-    "main.js": "/you-should-watch/static/js/main.46126664.js",
+    "main.css": "/you-should-watch/static/css/main.d89f274e.css",
+    "main.js": "/you-should-watch/static/js/main.45b104e7.js",
     "static/media/koala.png": "/you-should-watch/static/media/koala.526dbcf3db502d9ce0a6.png",
     "index.html": "/you-should-watch/index.html",
     "static/media/vertMenu.svg": "/you-should-watch/static/media/vertMenu.ba2fa162fa2cc45c659e759a7adbc4e5.svg",
-    "main.325031cd.css.map": "/you-should-watch/static/css/main.325031cd.css.map",
-    "main.46126664.js.map": "/you-should-watch/static/js/main.46126664.js.map"
+    "static/media/close.svg": "/you-should-watch/static/media/close.604f17ae9e7f7ab96de76a3408313180.svg",
+    "static/media/arrowRight.svg": "/you-should-watch/static/media/arrowRight.5273b54fbaa79dc791d06c7465420904.svg",
+    "static/media/chevronLeft.svg": "/you-should-watch/static/media/chevronLeft.bf77f59e88e41329693ce8545b6b87e6.svg",
+    "static/media/chevronRight.svg": "/you-should-watch/static/media/chevronRight.2b8dbc638e8fafbe574efaeb9fb800ed.svg",
+    "static/media/hamburger.svg": "/you-should-watch/static/media/hamburger.f8235882574e17fb850f4c89f02d8fe3.svg",
+    "main.d89f274e.css.map": "/you-should-watch/static/css/main.d89f274e.css.map",
+    "main.45b104e7.js.map": "/you-should-watch/static/js/main.45b104e7.js.map"
   },
   "entrypoints": [
-    "static/css/main.325031cd.css",
-    "static/js/main.46126664.js"
+    "static/css/main.d89f274e.css",
+    "static/js/main.45b104e7.js"
   ]
 }
