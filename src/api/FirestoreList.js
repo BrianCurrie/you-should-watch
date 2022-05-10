@@ -4,6 +4,7 @@ import {
     collection,
     addDoc,
     setDoc,
+    deleteDoc,
     doc,
     getDoc,
 } from 'firebase/firestore';
@@ -75,7 +76,7 @@ async function addToUsersLists(user, listPreview) {
     console.log('Adding to users list', listPreview);
 }
 
-// Remove a specific list from displaying on a user's lists page
+// Update a users created lists in users collection
 async function removeFromUsersLists(user, listId) {
     if (!user) {
         return undefined;
@@ -94,7 +95,7 @@ async function removeFromUsersLists(user, listId) {
 
     console.log('Updated user list, removed list Id:', listId);
 
-    return setDoc(
+    return await setDoc(
         userRef,
         {
             user,
@@ -102,6 +103,11 @@ async function removeFromUsersLists(user, listId) {
         },
         { merge: true }
     );
+}
+
+// Delete list from lists collection
+async function deleteList(listId) {
+    return await deleteDoc(doc(db, 'lists', listId));
 }
 
 async function getUsersData(userId) {
@@ -114,8 +120,8 @@ async function getUsersData(userId) {
     }
 }
 
-async function getFirestoreList(ref) {
-    const docRef = doc(db, 'lists', ref);
+async function getFirestoreList(listId) {
+    const docRef = doc(db, 'lists', listId);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -131,4 +137,5 @@ export {
     getFirestoreList,
     getUsersData,
     removeFromUsersLists,
+    deleteList,
 };

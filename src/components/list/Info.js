@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { getAuth } from 'firebase/auth';
 import { timeAgo } from '../../utils/formatTime.js';
 import Share from './Share.js';
-import { removeFromUsersLists } from '../../api/FirestoreList.js';
+import { removeFromUsersLists, deleteList } from '../../api/FirestoreList.js';
 import { ReactComponent as VertMenu } from '../../imgs/icons/vertMenu.svg';
 
 import style from './Info.module.css';
@@ -42,6 +42,7 @@ export default function ListInfo(props) {
     };
 
     const deleteOnClick = () => {
+        deleteList(props.id);
         removeFromUsersLists(props.listData.user, props.id).then(() =>
             navigate('/user/' + data.user.uid)
         );
