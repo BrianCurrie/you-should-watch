@@ -36,5 +36,5 @@ A movie list web application where users can create and share lists anonymously 
 
 <p align="center">
   <img src="https://i.imgur.com/8jjcvNJ.png" height='300px' />
-  <img src="https://i.imgur.com/3ZwAhkT.png" width="49%" /> 
+  <img src="https://i.imgur.com/3ZwAhkT.png" width="60%" /> 
 </p>
