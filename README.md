@@ -7,16 +7,11 @@ A movie list web application where users can create and share lists anonymously 
 [Example List 📜](https://briancurrie.github.io/you-should-watch/#/list/kGPcrPoOCqMBvxvOKEvm)
 
 
-## List Creation
+## Create and Share Lists
 
 <p align="center">
-  <img src="https://i.imgur.com/UAvQstc.png" width="800px"/>
-</p>
-
-## Movie List
-
-<p align="center">
-  <img src="https://i.imgur.com/3Rct8pJ.png" width="800px"/>
+  <img src="https://i.imgur.com/UAvQstc.png" width="49%"/>
+  <img src="https://i.imgur.com/3Rct8pJ.png" width="49%"/>
 </p>
 
 ## View Movie Information
@@ -26,10 +21,12 @@ A movie list web application where users can create and share lists anonymously 
   <img src="https://i.imgur.com/HCNyU0h.png" width="49%" /> 
 </p>
 
-## Users Lists 
+## Responsive and Mobile Friendly
 
 <p align="center">
-  <img src="https://i.imgur.com/ZYgMSRu.png" width="800px"/>
+  <img src="https://i.imgur.com/y9rSlxK.png" width="32%" />
+  <img src="https://i.imgur.com/ayau1gf.png" width="32%" /> 
+  <img src="https://i.imgur.com/ycmUcFp.png" width="32%" /> 
 </p>
 
 ## User Authentication and Social Media Sharing
