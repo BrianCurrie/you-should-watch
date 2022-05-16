@@ -12,6 +12,13 @@ export default function ListInfo(props) {
     const ref = useRef();
     const navigate = useNavigate();
     const [optionsOpen, setOptionsOpen] = useState(false);
+    const [editing, setEditing] = useState(false);
+    const [title, setTitle] = useState(props.listData.title);
+    const [tempTitle, setTempTitle] = useState(props.listData.title);
+    const [description, setDescription] = useState(props.listData.description);
+    const [tempDescription, setTempDescription] = useState(
+        props.listData.description
+    );
 
     // Close dropdown on outside click
     useEffect(() => {
@@ -48,8 +55,35 @@ export default function ListInfo(props) {
         );
     };
 
+    const editOnClick = () => {
+        setEditing(true);
+        setOptionsOpen(false);
+    };
+
+    const saveOnClick = () => {
+        setEditing(false);
+        setTitle(tempTitle);
+        setDescription(tempDescription);
+
+        // Update Lists and Users collections data on save
+    };
+
+    const cancelOnClick = () => {
+        setEditing(false);
+        setTempTitle(title);
+        setTempDescription(description);
+    };
+
+    const descriptionOnChange = (e) => {
+        setTempDescription(e.target.value);
+    };
+
+    const titleOnChange = (e) => {
+        setTempTitle(e.target.value);
+    };
+
     // Check if the current user is the owner of a list
-    // so we can conditionally render the delete option
+    // so we can conditionally render the options menu
     const isListOwner = () => {
         if (getAuth().currentUser && props.listData.user) {
             return getAuth().currentUser.uid === props.listData.user.uid;
@@ -60,63 +94,108 @@ export default function ListInfo(props) {
 
     return (
         <div className={style.container}>
-            <div className={style.mainInfo}>
-                <div className={style.titleContainer}>
-                    <div className={style.title}>
-                        {data.title ? data.title : 'Untitled'}
-                    </div>
-                    {isListOwner() && (
-                        <button
-                            ref={ref}
-                            onClick={optionsOnClick}
-                            className={style.vertMenu}
-                        >
-                            <VertMenu fill="var(--fillColor)" />
-                        </button>
-                    )}
-                    {optionsOpen && (
-                        <button
-                            onClick={deleteOnClick}
-                            className={`dropdownMenu ${style.deleteBtn}`}
-                        >
-                            Delete List
-                        </button>
-                    )}
-                </div>
+            {!editing && (
+                <>
+                    <div className={style.mainInfo}>
+                        <div className={style.titleContainer}>
+                            <div className={style.title}>
+                                {title ? title : 'Untitled'}
+                            </div>
 
-                <div className={style.userContainer}>
-                    {data.user && (
-                        <img
-                            className={style.userImg}
-                            onClick={() => navigate('/user/' + data.user.uid)}
-                            alt="User"
-                            src={data.user.profilePic}
-                        />
-                    )}
-                    <div className={style.userDate}>
-                        <div>
-                            {data.user ? (
-                                <button
-                                    className={style.usernameBtn}
+                            {isListOwner() && (
+                                <div className={style.menuContainer}>
+                                    <button
+                                        ref={ref}
+                                        onClick={optionsOnClick}
+                                        className={style.vertMenu}
+                                    >
+                                        <VertMenu fill="var(--fillColor)" />
+                                    </button>
+                                    {optionsOpen && (
+                                        <div
+                                            className={`dropdownMenu ${style.dropdownContainer}`}
+                                        >
+                                            <button onClick={editOnClick}>
+                                                Edit Info
+                                            </button>
+                                            <hr />
+                                            <button onClick={deleteOnClick}>
+                                                Delete
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+
+                        <div className={style.userContainer}>
+                            {data.user && (
+                                <img
+                                    className={style.userImg}
                                     onClick={() =>
                                         navigate('/user/' + data.user.uid)
                                     }
-                                >
-                                    {data.user.name}
-                                </button>
-                            ) : (
-                                'Anonymous'
+                                    alt="User"
+                                    src={data.user.profilePic}
+                                />
                             )}
-                        </div>
-                        <div className={style.timeCreated}>
-                            {timeAgo(data.timeCreated)}
+                            <div className={style.userDate}>
+                                <div>
+                                    {data.user ? (
+                                        <button
+                                            className={style.usernameBtn}
+                                            onClick={() =>
+                                                navigate(
+                                                    '/user/' + data.user.uid
+                                                )
+                                            }
+                                        >
+                                            {data.user.name}
+                                        </button>
+                                    ) : (
+                                        'Anonymous'
+                                    )}
+                                </div>
+                                <div className={style.timeCreated}>
+                                    {timeAgo(data.timeCreated)}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className={style.description}>{data.description}</div>
 
-            <Share id={props.id} />
+                    <div className={style.description}>{description}</div>
+
+                    <Share id={props.id} />
+                </>
+            )}
+
+            {editing && (
+                <div className={style.editContainer}>
+                    <input
+                        className={style.titleInput}
+                        type="text"
+                        placeholder="Title"
+                        spellCheck="true"
+                        value={tempTitle}
+                        onChange={titleOnChange}
+                    />
+                    <textarea
+                        className={style.descriptionInput}
+                        type="text"
+                        placeholder="Description"
+                        value={tempDescription}
+                        onChange={descriptionOnChange}
+                    />
+                    <div className={style.editBtnContainer}>
+                        <button className={`btn`} onClick={saveOnClick}>
+                            Save
+                        </button>
+                        <button className={`btn`} onClick={cancelOnClick}>
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

@@ -73,6 +73,7 @@ export default function CreateList(props) {
                 className={style.textInput}
                 type="text"
                 placeholder="Title"
+                spellCheck="true"
                 onInput={(e) => setTitle(e.target.value)}
             />
             <textarea
