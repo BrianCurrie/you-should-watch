@@ -28,7 +28,7 @@ Install dependencies
 cd you-should-watch
 npm install
 ```
-Run local developmnent server
+Run local development server
 
 ```
 npm start
